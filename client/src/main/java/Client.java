@@ -24,10 +24,10 @@ public class Client
             try {
                 String hostname = java.net.InetAddress.getLocalHost().getHostName();
                 System.out.println("Hostname " + hostname);
-                String prefix = "" + hostname + ": ";
-                System.out.print(prefix);
+                String prefix = hostname + ":";
+                System.out.print(prefix + " ");
                 String msg = in.nextLine();
-                String res = printer.printString(msg);
+                String res = printer.printString(prefix + msg);
                 System.out.println("Server: " + res);
                 System.out.println("");
                 in.close();
