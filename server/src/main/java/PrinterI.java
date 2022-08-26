@@ -7,21 +7,15 @@ public class PrinterI implements Demo.Printer
         String clientHostName = splittedMsg[0];
         String msg = splittedMsg[1];
 
-        if (!msg.equals("exit"))
-        {
-            if (this.isInteger(msg)){
-                int value = Integer.parseInt(msg);
-                if (value > 0){
-                    int fib = this.fibonacci(value);
-                    return String.valueOf(fib);
-                }
+        if (this.isInteger(msg)){
+            int value = Integer.parseInt(msg);
+            if (value > 0){
+                int fib = this.fibonacci(value);
+                return String.valueOf(fib);
             }
-            System.out.println(msg);
-            return "0";
-        } else {
-            current.adapter.getCommunicator().shutdown();
         }
-        return s;
+        System.out.println(msg);
+        return "0";
     }
 
     public boolean isInteger(String s)

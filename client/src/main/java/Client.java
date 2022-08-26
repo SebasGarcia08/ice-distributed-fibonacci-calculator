@@ -19,22 +19,31 @@ public class Client
                 throw new Error("Invalid proxy");
             }
 
-            Scanner in = new Scanner(System.in);
 
+            String hostname;
             try {
-                String hostname = java.net.InetAddress.getLocalHost().getHostName();
-                System.out.println("Hostname " + hostname);
-                String prefix = hostname + ":";
-                System.out.print(prefix + " ");
-                String msg = in.nextLine();
-                String res = printer.printString(prefix + msg);
-                System.out.println("Server: " + res);
-                System.out.println("");
-                in.close();
-            }
-            catch (java.net.UnknownHostException e) {
+                hostname = java.net.InetAddress.getLocalHost().getHostName();
+            } catch (java.net.UnknownHostException e) {
+                System.out.println("Unknown host");
                 e.printStackTrace();
+                return;
             }
+            
+            System.out.println("Welcome, " + hostname  + "!");
+            
+            Scanner in = new Scanner(System.in);
+            while(true){
+                    String prefix = hostname + ":";
+                    System.out.print("You: ");
+                    String msg = in.nextLine();
+                    if (msg.equals("exit")){
+                        break;
+                    }
+                    String res = printer.printString(prefix + msg);
+                    System.out.println("Server: " + res);
+                    System.out.println("");
+            }
+            in.close();
         }
     }
 }
