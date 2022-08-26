@@ -10,6 +10,7 @@ subprojects {
     // Apply Java and Ice Builder plug-ins to all sub-projects
     //
     apply plugin: 'java'
+    apply plugin: 'application'
     apply plugin: 'com.zeroc.gradle.ice-builder.slice'
  
     //

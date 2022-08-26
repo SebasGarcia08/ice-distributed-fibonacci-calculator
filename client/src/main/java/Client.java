@@ -16,8 +16,15 @@ public class Client
             {
                 throw new Error("Invalid proxy");
             }
-            String res = printer.printString("Hello World!");
-            System.out.println("Result: " + res);
+            String res = printer.printString("Hello me!");
+            try {
+                String hostname = java.net.InetAddress.getLocalHost().getHostName();
+                System.out.println("Hostname " + hostname);
+                System.out.println("Result: " + res);
+            }
+            catch (java.net.UnknownHostException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
