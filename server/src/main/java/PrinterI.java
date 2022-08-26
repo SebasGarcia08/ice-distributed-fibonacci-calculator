@@ -1,5 +1,16 @@
+import java.util.HashMap;
+
 public class PrinterI implements Demo.Printer
 {
+    
+    HashMap<Long, Long> mem; 
+    
+    public PrinterI() {
+        this.mem = new HashMap<Long, Long>();
+        this.mem.put(1L, 1L);
+        this.mem.put(2L, 1L);
+    }
+
     public String printString(String s, com.zeroc.Ice.Current current)
     {
         System.out.println(s);
@@ -7,14 +18,21 @@ public class PrinterI implements Demo.Printer
         String clientHostName = splittedMsg[0];
         String msg = splittedMsg[1];
 
+        if(msg.equals("exit")){
+            System.out.println(clientHostName + " left. \n");
+            return "Bye bye!";
+        }
+
         if (this.isInteger(msg)){
-            int value = Integer.parseInt(msg);
+            long value = Long.parseLong(msg);
             if (value > 0){
-                int fib = this.fibonacci(value);
+                long fib = this.fibonacci(value);
                 return String.valueOf(fib);
             }
         }
+
         System.out.println(msg);
+        System.out.println("");
         return "0";
     }
 
@@ -31,15 +49,16 @@ public class PrinterI implements Demo.Printer
         }
     }
 
-    public int fibonacci(int input){
-        if(input == 1) {
-            return 1;
+    public long fibonacci(long input){
+        if(this.mem.containsKey(input)){
+            return this.mem.get(input);
         }
-        else if(input == 2) {
-            return 1;
+
+        for (long i = this.mem.size() + 1; i <= input; i++){
+            long ithFib = this.mem.get(i-1) + this.mem.get(i-2);
+            this.mem.put(i, ithFib);
         }
-        else {
-            return fibonacci(input - 1) + fibonacci(input - 2);
-        }
+
+        return this.mem.get(input);
     }
 }

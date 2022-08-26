@@ -36,12 +36,13 @@ public class Client
                 String prefix = hostname + ":";
                 System.out.print("You: ");
                 String msg = in.nextLine();
-                if (msg.equals("exit")){
-                    break;
-                }
                 String res = printer.printString(prefix + msg);
                 System.out.println("Server: " + res);
                 System.out.println("");
+                if (msg.equals("exit")){
+                    System.out.println("Connection closed.");
+                    break;
+                }
             }
             in.close();
         }
