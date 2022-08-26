@@ -6,6 +6,7 @@ public class Server
 
         try(com.zeroc.Ice.Communicator communicator = com.zeroc.Ice.Util.initialize(args,"config.server",extraArgs))
         {
+            String p = communicator.getProperties().getProperty("Key.example");
             if(!extraArgs.isEmpty())
             {
                 System.err.println("too many arguments");
@@ -13,6 +14,7 @@ public class Server
                     System.out.println(v);
                 }
             }
+            System.out.println("Key.example " + p);
             com.zeroc.Ice.ObjectAdapter adapter = communicator.createObjectAdapter("Printer");
             com.zeroc.Ice.Object object = new PrinterI();
             adapter.add(object, com.zeroc.Ice.Util.stringToIdentity("SimplePrinter"));

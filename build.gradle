@@ -12,6 +12,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'application'
     apply plugin: 'com.zeroc.gradle.ice-builder.slice'
+    mainClassName = "Server"
  
     //
     // Both Client and Server projects share the Printer.ice Slice definitions
