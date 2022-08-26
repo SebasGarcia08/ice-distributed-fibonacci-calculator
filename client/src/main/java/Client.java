@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Client
 {
     public static void main(String[] args)
@@ -16,11 +18,19 @@ public class Client
             {
                 throw new Error("Invalid proxy");
             }
-            String res = printer.printString("Hello me!");
+
+            Scanner in = new Scanner(System.in);
+
             try {
                 String hostname = java.net.InetAddress.getLocalHost().getHostName();
                 System.out.println("Hostname " + hostname);
-                System.out.println("Result: " + res);
+                String prefix = "" + hostname + ": ";
+                System.out.print(prefix);
+                String msg = in.nextLine();
+                String res = printer.printString(msg);
+                System.out.println("Server: " + res);
+                System.out.println("");
+                in.close();
             }
             catch (java.net.UnknownHostException e) {
                 e.printStackTrace();
