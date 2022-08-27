@@ -13,27 +13,32 @@ public class PrinterI implements Demo.Printer
 
     public String printString(String s, com.zeroc.Ice.Current current)
     {
-        System.out.println(s);
         String[] splittedMsg = s.split(":");
         String clientHostName = splittedMsg[0];
         String msg = splittedMsg[1];
-
-        if(msg.equals("exit")){
-            System.out.println(clientHostName + " left. \n");
-            return "Bye bye!";
-        }
+        String response = "0";
 
         if (this.isInteger(msg)){
             long value = Long.parseLong(msg);
             if (value > 0){
                 long fib = this.fibonacci(value);
-                return String.valueOf(fib);
+                response = String.valueOf(fib);
+                for (long i = 1; i <= value; i++){
+                    System.out.print(this.mem.get(i) + " ");
+                }
+                System.out.println("");
             }
+        } 
+        else if(msg.equals("exit")){
+            System.out.println(clientHostName + " left. \n");
+            response = "Bye bye!";
+        }
+        else {
+            response = "0";
+            System.out.println(s);
         }
 
-        System.out.println(msg);
-        System.out.println("");
-        return "0";
+        return response;
     }
 
     public boolean isInteger(String s)

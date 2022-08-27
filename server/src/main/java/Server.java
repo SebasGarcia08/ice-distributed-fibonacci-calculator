@@ -14,7 +14,7 @@ public class Server
                     System.out.println(v);
                 }
             }
-            System.out.println("Key.example " + p);
+            // System.out.println("Key.example " + p);
             com.zeroc.Ice.ObjectAdapter adapter = communicator.createObjectAdapter("Printer");
             com.zeroc.Ice.Object object = new PrinterI();
             adapter.add(object, com.zeroc.Ice.Util.stringToIdentity("SimplePrinter"));
