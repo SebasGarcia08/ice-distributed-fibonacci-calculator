@@ -1,14 +1,16 @@
 import java.util.HashMap;
+import java.math.BigInteger;
 
 public class PrinterI implements Demo.Printer
 {
-    
-    HashMap<Long, Long> mem; 
-    
+    boolean printNumbers = false;
+    HashMap<Long, BigInteger> mem; 
+
     public PrinterI() {
-        this.mem = new HashMap<Long, Long>();
-        this.mem.put(1L, 1L);
-        this.mem.put(2L, 1L);
+        this.mem = new HashMap<Long, BigInteger>();
+        BigInteger one = BigInteger.ONE;
+        this.mem.put(1L, one);
+        this.mem.put(2L, one);
     }
 
     public String printString(String s, com.zeroc.Ice.Current current)
@@ -18,15 +20,17 @@ public class PrinterI implements Demo.Printer
         String msg = splittedMsg[1];
         String response = "0";
 
-        if (this.isInteger(msg)){
-            long value = Long.parseLong(msg);
-            if (value > 0){
-                long fib = this.fibonacci(value);
+        Long value = this.isLong(msg);
+
+        if (value != null){
+            if (value > 0L){
+                BigInteger fib = this.fibonacci(value);
                 response = String.valueOf(fib);
-                for (long i = 1; i <= value; i++){
-                    System.out.print(this.mem.get(i) + " ");
+                if (this.printNumbers){
+                    for (long i = 1; i <= value; i++)
+                        System.out.print(this.mem.get(i) + " ");
+                    System.out.println("");
                 }
-                System.out.println("");
             }
         } 
         else if(msg.equals("exit")){
@@ -41,27 +45,25 @@ public class PrinterI implements Demo.Printer
         return response;
     }
 
-    public boolean isInteger(String s)
+    public Long isLong(String s)
     {
         try
         {
-            Integer.parseInt(s);
-            return true;
+            return Long.parseLong(s);
         }
         catch(NumberFormatException e)
         {
-            return false;
+            return null;
         }
     }
 
-    public long fibonacci(long input){
-        if(this.mem.containsKey(input)){
+    public BigInteger fibonacci(long input){
+        if(this.mem.containsKey(input))
             return this.mem.get(input);
-        }
 
-        for (long i = this.mem.size() + 1; i <= input; i++){
-            long ithFib = this.mem.get(i-1) + this.mem.get(i-2);
-            this.mem.put(i, ithFib);
+        for (long i = this.mem.size() + 1; i <= input; i++) {
+            BigInteger fib = this.mem.get(i - 1).add(this.mem.get(i - 2));
+            this.mem.put(i, fib);
         }
 
         return this.mem.get(input);
