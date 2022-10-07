@@ -3,14 +3,16 @@ import java.math.BigInteger;
 
 public class PrinterI implements Demo.Printer
 {
+    final int MAX = 100000000;
     boolean printNumbers = false;
-    HashMap<Long, BigInteger> mem; 
+    BigInteger[] mem; 
+    int size = 2; 
 
     public PrinterI() {
-        this.mem = new HashMap<Long, BigInteger>();
-        BigInteger one = BigInteger.ONE;
-        this.mem.put(1L, one);
-        this.mem.put(2L, one);
+        this.mem = new BigInteger[MAX];
+        this.mem[0] = BigInteger.ZERO;
+        this.mem[1] = BigInteger.ONE;
+        this.mem[2] = BigInteger.ONE;
     }
 
     public String printString(String s, com.zeroc.Ice.Current current)
@@ -20,15 +22,15 @@ public class PrinterI implements Demo.Printer
         String msg = splittedMsg[1];
         String response = "0";
 
-        Long value = this.isLong(msg);
+        Integer value = this.isInteger(msg);
 
         if (value != null){
             if (value > 0L){
                 BigInteger fib = this.fibonacci(value);
                 response = String.valueOf(fib);
                 if (this.printNumbers){
-                    for (long i = 1; i <= value; i++)
-                        System.out.print(this.mem.get(i) + " ");
+                    for (int i = 1; i <= value; i++)
+                        System.out.print(this.mem[i] + " ");
                     System.out.println("");
                 }
             }
@@ -45,11 +47,11 @@ public class PrinterI implements Demo.Printer
         return response;
     }
 
-    public Long isLong(String s)
+    public Integer isInteger(String s)
     {
         try
         {
-            return Long.parseLong(s);
+            return Integer.parseInteger(s);
         }
         catch(NumberFormatException e)
         {
@@ -57,15 +59,17 @@ public class PrinterI implements Demo.Printer
         }
     }
 
-    public BigInteger fibonacci(long input){
-        if(this.mem.containsKey(input))
-            return this.mem.get(input);
+    public BigInteger fibonacci(Integer input){
+        if(input <= this.size)
+            return this.mem[input];
 
-        for (long i = this.mem.size() + 1; i <= input; i++) {
-            BigInteger fib = this.mem.get(i - 1).add(this.mem.get(i - 2));
-            this.mem.put(i, fib);
+        for (int i = this.size + 1; i <= input; i++) {
+            BigInteger fib = this.mem[i - 1].add(this.mem[i - 2]);
+            this.mem[i] = fib;
         }
 
-        return this.mem.get(input);
+        this.size++;
+
+        return this.mem[input];
     }
 }
