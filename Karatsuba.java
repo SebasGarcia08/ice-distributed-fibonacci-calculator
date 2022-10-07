@@ -6,13 +6,13 @@ class Karatsuba {
     private final static BigInteger ZERO = new BigInteger("0");
     private final static BigInteger TWO = new BigInteger("2");
     static BigInteger f[];
-    static int MAX = 100000000;
+    static int MAX = 1000000000;
 
     public static BigInteger karatsuba(BigInteger x, BigInteger y) {
 
         // cutoff to brute force
         int N = Math.max(x.bitLength(), y.bitLength());
-        if (N <= 2000) return x.multiply(y);                // optimize this parameter
+        if (N <= 200000000) return x.multiply(y);                // optimize this parameter
 
         // number of bits divided by 2, rounded up
         N = (N / 2) + (N % 2);
@@ -32,7 +32,7 @@ class Karatsuba {
     }
 
    public static BigInteger mul(BigInteger a, BigInteger b) {
-        return a.multiply(b);
+        return karatsuba(a, b);
     }
 
     public static BigInteger add(BigInteger a, BigInteger b) {
@@ -73,12 +73,5 @@ class Karatsuba {
         int N = Integer.parseInt(args[0]);
         f = new BigInteger[MAX];
         BigInteger result = fib(N);
-        System.out.println(result);
-        for (int i = 0; i < N; i++) {
-            if (f[i] == null) {
-                break;
-            }
-            System.out.print(f[i].toString() + " ");
-        }
     }
 }
