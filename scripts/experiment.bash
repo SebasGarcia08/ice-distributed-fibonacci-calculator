@@ -1,20 +1,58 @@
-echo 'Enter the number of clients to run the experiment with' 
-read num_clients
+while getopts 'n':'f':'w':'m':'h' flag
+do 
+        case "${flag}" in
+                n) num_clients=${OPTARG}
+                    ;;
+                f) max_fib=${OPTARG}
+                    ;;
+                w) max_wait=${OPTARG}
+                    ;;
+                m) max_heap=${OPTARG}
+                    ;;
+                y) confirmed=true
+                    ;;
+                h) echo "Usage: ./experiment.bash -n <num_clients> -f <max_fib> -w <max_wait> -m <max_heap>"
+                    echo 'num_clients: number of clients to request the server'
+                    echo 'max_fib: maximum number to calculate the fibonacci sequence'
+                    echo 'max_wait: maximum time to wait among equests'
+                    echo 'max_heap: maximum heap size for the java virtual macihne for the server'
+                    exit 0
+                    ;;
+                *) echo "Invalid option -${flag}"
+                    ;;
+        esac
+done
 
-echo 'Enter the maximum i-th fibonacci number to calculate'
-read max_fib
+required_args=(num_clients max_fib max_wait max_heap)
+flag_names=(n f w m)
 
-echo 'Enter the maximum wait time among requests'
-read max_wait
+for i in "${!required_args[@]}"; do
+        if [ -z "${!required_args[$i]}" ]; then
+                echo "Missing required argument -${flag_names[$i]}"
+                exit 1
+        fi
+done
 
-echo 'Enter the maximum java heap size (default 512m)'
-read max_heap
+echo 'Running experiment with the following parameters:'
+echo "Number of clients: $num_clients"
+echo "Max fib: $max_fib"
+echo "Max wait: $max_wait"
+echo "Max heap: $max_heap"
+
+if [ "$confirmed" = false ]; then
+        echo 'Are you sure you want to continue? (y/n)'
+        read -r confirmed
+        if [ "$confirmed" != 'y' ]; then
+                echo 'Aborting...'
+                exit 0
+        fi
+fi
 
 echo "Compressing files..."
-zip -r helloworld-ciclo-kbd-AlejandraDiaz-SebastianGarcia.zip .
+##zip -r helloworld-ciclo-kbd-AlejandraDiaz-SebastianGarcia.zip .
 echo 'Done.'
 
 echo "Installing sshpass..."
-sudo apt-get install sshpass
+#sudo apt-get install sshpass
 echo 'Done.'
 
