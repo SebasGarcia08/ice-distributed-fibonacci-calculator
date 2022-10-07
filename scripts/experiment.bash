@@ -1,3 +1,4 @@
+#!/bin/bash
 while getopts 'n':'f':'w':'m':'h' flag
 do 
         case "${flag}" in
@@ -49,10 +50,16 @@ if [ "$confirmed" = false ]; then
 fi
 
 echo "Compressing files..."
-##zip -r helloworld-ciclo-kbd-AlejandraDiaz-SebastianGarcia.zip .
+zip -r helloworld-ciclo-kbd-AlejandraDiaz-SebastianGarcia.zip .
 echo 'Done.'
 
 echo "Installing sshpass..."
-#sudo apt-get install sshpass
+apt-get install sshpass
 echo 'Done.'
 
+for i in $(seq 1 $num_clients); do
+        hostname="xhgrid$i"
+        echo "Copying to $hostname"
+        sshpass -p "swarch" scp helloworld-ciclo-kbd-AlejandraDiaz-SebastianGarcia.zip swarch@$hostname:~/
+        echo 'Done.'
+done
