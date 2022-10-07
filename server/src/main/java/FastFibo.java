@@ -1,6 +1,7 @@
+
 import java.math.BigInteger;
 
-class Karatsuba {
+class FastFibo {
 
     private final static BigInteger ZERO = new BigInteger("0");
     private final static BigInteger TWO = new BigInteger("2");
