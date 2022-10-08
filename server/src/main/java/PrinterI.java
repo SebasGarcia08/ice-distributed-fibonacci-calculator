@@ -51,7 +51,7 @@ public class PrinterI implements Demo.Printer
     {
         try
         {
-            return Integer.parseInteger(s);
+            return Integer.parseInt(s);
         }
         catch(NumberFormatException e)
         {
