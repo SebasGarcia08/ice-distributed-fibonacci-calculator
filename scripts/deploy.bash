@@ -7,6 +7,7 @@ fi
 
 hostname=$1
 
+rm -rf sebas-aleja.zip
 zip -r sebas-aleja.zip .
 
 echo "Deploying to $hostname..."
