@@ -50,16 +50,19 @@ if [ "$confirmed" = false ]; then
 fi
 
 echo "Compressing files..."
-zip -r helloworld-ciclo-kbd-AlejandraDiaz-SebastianGarcia.zip .
+zip -r sebas-aleja.zip .
 echo 'Done.'
 
 echo "Installing sshpass..."
 apt-get install sshpass
 echo 'Done.'
 
+echo 'Compiling...'
+#./gradlew build
+
 for i in $(seq 1 $num_clients); do
-        hostname="xhgrid$i"
-        echo "Copying to $hostname"
-        sshpass -p "swarch" scp helloworld-ciclo-kbd-AlejandraDiaz-SebastianGarcia.zip swarch@$hostname:~/
-        echo 'Done.'
+    hostname="xhgrid$i"
+    echo "Copying to $hostname"
+    sshpass -p "swarch" scp sebas-aleja.zip swarch@$hostname:~/ 
+    echo 'Done.'
 done

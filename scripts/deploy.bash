@@ -1,20 +1,23 @@
-echo "Compressing files..."
-zip -r helloworld-ciclo-kbd-AlejandraDiaz-SebastianGarcia.zip .
+export SSHPASS='swarch'
 
-echo "Installing sshpass..."
-sudo apt-get install sshpass
+if [ -z $1 ]; then
+    echo 'Missing required argument hostname to deploy (e.g. xhgrid1)'
+    exit 1
+fi
 
-echo "Enter the hostnames you want to copy this project to"
-IFS=, read -ra names
+hostname=$1
 
-for hostname in "${names[@]}"; do
-    echo "Copying to $hostname"
-    sshpass -p "swarch" scp helloworld-ciclo-kbd-AlejandraDiaz-SebastianGarcia.zip swarch@$hostname:~/
-    echo "Done."
-done
+zip -r sebas-aleja.zip .
 
-for hostname in "${names[@]}"; do
-    echo "Compiling on $hostname"
-    sshpass -p "swarch" ssh swarch@$hostname "unzip helloworld-ciclo-kbd-AlejandraDiaz-SebastianGarcia.zip -d sebas-aleja; rm sebas-aleja.zip; cd ./sebas-aleja && ./gradlew build" &
-    echo "Done."
-do
+echo "Deploying to $hostname..."
+echo "Copying files..."
+sshpass -e scp -v -o StrictHostKeyChecking=no \
+    sebas-aleja.zip swarch@$hostname:~/ 
+echo 'Done.'
+
+echo "Unzipping files..."
+sshpass -e ssh -o StrictHostKeyChecking=no \
+        swarch@$hostname \
+        unzip -o sebas-aleja.zip -d sebas-aleja &&\
+        ls sebas-aleja 
+echo 'Done.'
