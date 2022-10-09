@@ -15,42 +15,40 @@
 
 package Demo;
 
-public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
+public interface CallbackPrx extends com.zeroc.Ice.ObjectPrx
 {
-    default void printString(String s, CallbackPrx cl)
+    default void response(String s)
     {
-        printString(s, cl, com.zeroc.Ice.ObjectPrx.noExplicitContext);
+        response(s, com.zeroc.Ice.ObjectPrx.noExplicitContext);
     }
 
-    default void printString(String s, CallbackPrx cl, java.util.Map<String, String> context)
+    default void response(String s, java.util.Map<String, String> context)
     {
-        _iceI_printStringAsync(s, cl, context, true).waitForResponse();
+        _iceI_responseAsync(s, context, true).waitForResponse();
     }
 
-    default java.util.concurrent.CompletableFuture<Void> printStringAsync(String s, CallbackPrx cl)
+    default java.util.concurrent.CompletableFuture<Void> responseAsync(String s)
     {
-        return _iceI_printStringAsync(s, cl, com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
+        return _iceI_responseAsync(s, com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
     }
 
-    default java.util.concurrent.CompletableFuture<Void> printStringAsync(String s, CallbackPrx cl, java.util.Map<String, String> context)
+    default java.util.concurrent.CompletableFuture<Void> responseAsync(String s, java.util.Map<String, String> context)
     {
-        return _iceI_printStringAsync(s, cl, context, false);
+        return _iceI_responseAsync(s, context, false);
     }
 
     /**
      * @hidden
      * @param iceP_s -
-     * @param iceP_cl -
      * @param context -
      * @param sync -
      * @return -
      **/
-    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_printStringAsync(String iceP_s, CallbackPrx iceP_cl, java.util.Map<String, String> context, boolean sync)
+    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_responseAsync(String iceP_s, java.util.Map<String, String> context, boolean sync)
     {
-        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "printString", null, sync, null);
+        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "response", null, sync, null);
         f.invoke(false, context, null, ostr -> {
                      ostr.writeString(iceP_s);
-                     ostr.writeProxy(iceP_cl);
                  }, null);
         return f;
     }
@@ -61,9 +59,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @param obj The untyped proxy.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
-    static PrinterPrx checkedCast(com.zeroc.Ice.ObjectPrx obj)
+    static CallbackPrx checkedCast(com.zeroc.Ice.ObjectPrx obj)
     {
-        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, ice_staticId(), PrinterPrx.class, _PrinterPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, ice_staticId(), CallbackPrx.class, _CallbackPrxI.class);
     }
 
     /**
@@ -73,9 +71,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @param context The Context map to send with the invocation.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
-    static PrinterPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, java.util.Map<String, String> context)
+    static CallbackPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, java.util.Map<String, String> context)
     {
-        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, context, ice_staticId(), PrinterPrx.class, _PrinterPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, context, ice_staticId(), CallbackPrx.class, _CallbackPrxI.class);
     }
 
     /**
@@ -85,9 +83,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @param facet The name of the desired facet.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
-    static PrinterPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
+    static CallbackPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
     {
-        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, ice_staticId(), PrinterPrx.class, _PrinterPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, ice_staticId(), CallbackPrx.class, _CallbackPrxI.class);
     }
 
     /**
@@ -98,9 +96,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @param context The Context map to send with the invocation.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
-    static PrinterPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet, java.util.Map<String, String> context)
+    static CallbackPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet, java.util.Map<String, String> context)
     {
-        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, context, ice_staticId(), PrinterPrx.class, _PrinterPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, context, ice_staticId(), CallbackPrx.class, _CallbackPrxI.class);
     }
 
     /**
@@ -108,9 +106,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @param obj The untyped proxy.
      * @return A proxy for this type.
      **/
-    static PrinterPrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj)
+    static CallbackPrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj)
     {
-        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, PrinterPrx.class, _PrinterPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, CallbackPrx.class, _CallbackPrxI.class);
     }
 
     /**
@@ -119,9 +117,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @param facet The name of the desired facet.
      * @return A proxy for this type.
      **/
-    static PrinterPrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
+    static CallbackPrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
     {
-        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, facet, PrinterPrx.class, _PrinterPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, facet, CallbackPrx.class, _CallbackPrxI.class);
     }
 
     /**
@@ -130,9 +128,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified per-proxy context.
      **/
     @Override
-    default PrinterPrx ice_context(java.util.Map<String, String> newContext)
+    default CallbackPrx ice_context(java.util.Map<String, String> newContext)
     {
-        return (PrinterPrx)_ice_context(newContext);
+        return (CallbackPrx)_ice_context(newContext);
     }
 
     /**
@@ -141,9 +139,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified adapter ID.
      **/
     @Override
-    default PrinterPrx ice_adapterId(String newAdapterId)
+    default CallbackPrx ice_adapterId(String newAdapterId)
     {
-        return (PrinterPrx)_ice_adapterId(newAdapterId);
+        return (CallbackPrx)_ice_adapterId(newAdapterId);
     }
 
     /**
@@ -152,9 +150,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified endpoints.
      **/
     @Override
-    default PrinterPrx ice_endpoints(com.zeroc.Ice.Endpoint[] newEndpoints)
+    default CallbackPrx ice_endpoints(com.zeroc.Ice.Endpoint[] newEndpoints)
     {
-        return (PrinterPrx)_ice_endpoints(newEndpoints);
+        return (CallbackPrx)_ice_endpoints(newEndpoints);
     }
 
     /**
@@ -163,9 +161,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified locator cache timeout.
      **/
     @Override
-    default PrinterPrx ice_locatorCacheTimeout(int newTimeout)
+    default CallbackPrx ice_locatorCacheTimeout(int newTimeout)
     {
-        return (PrinterPrx)_ice_locatorCacheTimeout(newTimeout);
+        return (CallbackPrx)_ice_locatorCacheTimeout(newTimeout);
     }
 
     /**
@@ -174,9 +172,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified invocation timeout.
      **/
     @Override
-    default PrinterPrx ice_invocationTimeout(int newTimeout)
+    default CallbackPrx ice_invocationTimeout(int newTimeout)
     {
-        return (PrinterPrx)_ice_invocationTimeout(newTimeout);
+        return (CallbackPrx)_ice_invocationTimeout(newTimeout);
     }
 
     /**
@@ -185,9 +183,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified caching policy.
      **/
     @Override
-    default PrinterPrx ice_connectionCached(boolean newCache)
+    default CallbackPrx ice_connectionCached(boolean newCache)
     {
-        return (PrinterPrx)_ice_connectionCached(newCache);
+        return (CallbackPrx)_ice_connectionCached(newCache);
     }
 
     /**
@@ -196,9 +194,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified endpoint selection policy.
      **/
     @Override
-    default PrinterPrx ice_endpointSelection(com.zeroc.Ice.EndpointSelectionType newType)
+    default CallbackPrx ice_endpointSelection(com.zeroc.Ice.EndpointSelectionType newType)
     {
-        return (PrinterPrx)_ice_endpointSelection(newType);
+        return (CallbackPrx)_ice_endpointSelection(newType);
     }
 
     /**
@@ -209,9 +207,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified selection policy.
      **/
     @Override
-    default PrinterPrx ice_secure(boolean b)
+    default CallbackPrx ice_secure(boolean b)
     {
-        return (PrinterPrx)_ice_secure(b);
+        return (CallbackPrx)_ice_secure(b);
     }
 
     /**
@@ -220,9 +218,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified encoding version.
      **/
     @Override
-    default PrinterPrx ice_encodingVersion(com.zeroc.Ice.EncodingVersion e)
+    default CallbackPrx ice_encodingVersion(com.zeroc.Ice.EncodingVersion e)
     {
-        return (PrinterPrx)_ice_encodingVersion(e);
+        return (CallbackPrx)_ice_encodingVersion(e);
     }
 
     /**
@@ -233,9 +231,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified selection policy.
      **/
     @Override
-    default PrinterPrx ice_preferSecure(boolean b)
+    default CallbackPrx ice_preferSecure(boolean b)
     {
-        return (PrinterPrx)_ice_preferSecure(b);
+        return (CallbackPrx)_ice_preferSecure(b);
     }
 
     /**
@@ -244,9 +242,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified router.
      **/
     @Override
-    default PrinterPrx ice_router(com.zeroc.Ice.RouterPrx router)
+    default CallbackPrx ice_router(com.zeroc.Ice.RouterPrx router)
     {
-        return (PrinterPrx)_ice_router(router);
+        return (CallbackPrx)_ice_router(router);
     }
 
     /**
@@ -255,9 +253,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified locator.
      **/
     @Override
-    default PrinterPrx ice_locator(com.zeroc.Ice.LocatorPrx locator)
+    default CallbackPrx ice_locator(com.zeroc.Ice.LocatorPrx locator)
     {
-        return (PrinterPrx)_ice_locator(locator);
+        return (CallbackPrx)_ice_locator(locator);
     }
 
     /**
@@ -266,9 +264,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified collocation optimization.
      **/
     @Override
-    default PrinterPrx ice_collocationOptimized(boolean b)
+    default CallbackPrx ice_collocationOptimized(boolean b)
     {
-        return (PrinterPrx)_ice_collocationOptimized(b);
+        return (CallbackPrx)_ice_collocationOptimized(b);
     }
 
     /**
@@ -276,9 +274,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy that uses twoway invocations.
      **/
     @Override
-    default PrinterPrx ice_twoway()
+    default CallbackPrx ice_twoway()
     {
-        return (PrinterPrx)_ice_twoway();
+        return (CallbackPrx)_ice_twoway();
     }
 
     /**
@@ -286,9 +284,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy that uses oneway invocations.
      **/
     @Override
-    default PrinterPrx ice_oneway()
+    default CallbackPrx ice_oneway()
     {
-        return (PrinterPrx)_ice_oneway();
+        return (CallbackPrx)_ice_oneway();
     }
 
     /**
@@ -296,9 +294,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy that uses batch oneway invocations.
      **/
     @Override
-    default PrinterPrx ice_batchOneway()
+    default CallbackPrx ice_batchOneway()
     {
-        return (PrinterPrx)_ice_batchOneway();
+        return (CallbackPrx)_ice_batchOneway();
     }
 
     /**
@@ -306,9 +304,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy that uses datagram invocations.
      **/
     @Override
-    default PrinterPrx ice_datagram()
+    default CallbackPrx ice_datagram()
     {
-        return (PrinterPrx)_ice_datagram();
+        return (CallbackPrx)_ice_datagram();
     }
 
     /**
@@ -316,9 +314,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy that uses batch datagram invocations.
      **/
     @Override
-    default PrinterPrx ice_batchDatagram()
+    default CallbackPrx ice_batchDatagram()
     {
-        return (PrinterPrx)_ice_batchDatagram();
+        return (CallbackPrx)_ice_batchDatagram();
     }
 
     /**
@@ -327,9 +325,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified compression setting.
      **/
     @Override
-    default PrinterPrx ice_compress(boolean co)
+    default CallbackPrx ice_compress(boolean co)
     {
-        return (PrinterPrx)_ice_compress(co);
+        return (CallbackPrx)_ice_compress(co);
     }
 
     /**
@@ -338,9 +336,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified timeout.
      **/
     @Override
-    default PrinterPrx ice_timeout(int t)
+    default CallbackPrx ice_timeout(int t)
     {
-        return (PrinterPrx)_ice_timeout(t);
+        return (CallbackPrx)_ice_timeout(t);
     }
 
     /**
@@ -349,9 +347,9 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified connection ID.
      **/
     @Override
-    default PrinterPrx ice_connectionId(String connectionId)
+    default CallbackPrx ice_connectionId(String connectionId)
     {
-        return (PrinterPrx)_ice_connectionId(connectionId);
+        return (CallbackPrx)_ice_connectionId(connectionId);
     }
 
     /**
@@ -360,13 +358,13 @@ public interface PrinterPrx extends com.zeroc.Ice.ObjectPrx
      * @return A fixed proxy bound to the given connection.
      **/
     @Override
-    default PrinterPrx ice_fixed(com.zeroc.Ice.Connection connection)
+    default CallbackPrx ice_fixed(com.zeroc.Ice.Connection connection)
     {
-        return (PrinterPrx)_ice_fixed(connection);
+        return (CallbackPrx)_ice_fixed(connection);
     }
 
     static String ice_staticId()
     {
-        return "::Demo::Printer";
+        return "::Demo::Callback";
     }
 }
