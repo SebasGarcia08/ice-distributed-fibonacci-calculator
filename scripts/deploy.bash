@@ -20,5 +20,7 @@ echo "Unzipping files..."
 sshpass -e ssh -o StrictHostKeyChecking=no \
         swarch@$hostname \
         unzip -o sebas-aleja.zip -d sebas-aleja &&\
-        ls sebas-aleja 
+        rm -rf sebas-aleja.zip && \
+        cd sebas-aleja 
+        
 echo 'Done.'

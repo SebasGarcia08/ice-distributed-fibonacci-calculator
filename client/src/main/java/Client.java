@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Client
 {
@@ -36,8 +37,14 @@ public class Client
                 String prefix = hostname + ":";
                 System.out.print("You: ");
                 String msg = in.nextLine();
+                long startTime = System.nanoTime();
                 String res = printer.printString(prefix + msg);
+                long elapsed = System.nanoTime() - startTime;
+                long elapsedMillis = TimeUnit.MILLISECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
+                long elapsedSecs = TimeUnit.SECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
+
                 System.out.println("Server: " + res);
+                System.out.println("Time: " + (elapsedMillis) + " ms, " + (elapsedSecs) + " s");
                 System.out.println("");
                 if (msg.equals("exit")){
                     System.out.println("Connection closed.");
