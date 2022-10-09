@@ -21,6 +21,6 @@ sshpass -e ssh -o StrictHostKeyChecking=no \
         swarch@$hostname \
         unzip -o sebas-aleja.zip -d sebas-aleja &&\
         rm -rf sebas-aleja.zip && \
-        cd sebas-aleja 
+        java -jar client/build/libs/client.jar &
         
 echo 'Done.'

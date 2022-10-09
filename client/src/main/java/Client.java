@@ -1,5 +1,8 @@
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+
+import Demo.CallbackPrx;
+import Demo.PrinterPrx;
 import com.zeroc.Ice.Util;
 import com.zeroc.Ice.Communicator;
 import com.zeroc.Ice.Object;
@@ -16,19 +19,10 @@ public class Client {
             Demo.PrinterPrx twoway = Demo.PrinterPrx.checkedCast(
                     communicator.propertyToProxy("Printer.Proxy")).ice_twoway().ice_secure(false);
             // Demo.PrinterPrx printer = Demo.PrinterPrx.checkedCast(base);
-            Demo.PrinterPrx printer = twoway.ice_twoway();
+            PrinterPrx printer = twoway.ice_twoway();
 
             if (printer == null) {
                 throw new Error("Invalid proxy");
-            }
-
-            String hostname;
-            try {
-                hostname = java.net.InetAddress.getLocalHost().getHostName();
-            } catch (java.net.UnknownHostException e) {
-                System.out.println("Unknown host");
-                e.printStackTrace();
-                return;
             }
 
             // Callback configuration
@@ -36,35 +30,42 @@ public class Client {
             Object obj = new Callback();
             ObjectPrx objectPrx = adapter.add(obj, Util.stringToIdentity("callback"));
             adapter.activate();
-            Demo.CallbackPrx callPrx = Demo.CallbackPrx.uncheckedCast(objectPrx);
-
-            System.out.println("Welcome, " + hostname + "!");
-
-            Scanner in = new Scanner(System.in);
-            while (true) {
-                String prefix = hostname + ":";
-                System.out.print("You: ");
-                String msg = in.nextLine();
-                long startTime = System.nanoTime();
-                String res = "";
-                printer.printString(prefix + msg, callPrx);
-                long elapsed = System.nanoTime() - startTime;
-                long elapsedMillis = TimeUnit.MILLISECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
-                long elapsedSecs = TimeUnit.SECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
-
-                System.out.println("Server: " + res);
-                System.out.println("Time: " + (elapsedMillis) + " ms, " + (elapsedSecs) + " s");
-                System.out.println("");
-                if (msg.equals("exit")) {
-                    System.out.println("Connection closed.");
-                    break;
-                }
-            }
-            in.close();
+            CallbackPrx callPrx = CallbackPrx.uncheckedCast(objectPrx);
+            run(printer, callPrx);
         }
     }
 
-    public static void run(Demo.PrinterPrx printer, Demo.CallbackPrx callback) {
-        // printer.printString("Hello World!", callback);
+    public static void run(PrinterPrx printer, CallbackPrx callback) {
+        String hostname;
+        try {
+            hostname = java.net.InetAddress.getLocalHost().getHostName();
+        } catch (java.net.UnknownHostException e) {
+            System.out.println("Unknown host");
+            e.printStackTrace();
+            return;
+        }
+        System.out.println("Welcome, " + hostname + "!");
+
+        Scanner in = new Scanner(System.in);
+        while (true) {
+            String prefix = hostname + ":";
+            System.out.print("You: ");
+            String msg = in.nextLine();
+            long startTime = System.nanoTime();
+            String res = "";
+            printer.printString(prefix + msg, callback);
+            long elapsed = System.nanoTime() - startTime;
+            long elapsedMillis = TimeUnit.MILLISECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
+            long elapsedSecs = TimeUnit.SECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
+
+            System.out.println("Server: " + res);
+            System.out.println("Time: " + (elapsedMillis) + " ms, " + (elapsedSecs) + " s");
+            System.out.println("");
+            if (msg.equals("exit")) {
+                System.out.println("Connection closed.");
+                break;
+            }
+        }
+        in.close();
     }
 }
