@@ -100,7 +100,7 @@ public class Task implements Runnable {
         for (HashMap.Entry<String, CallbackPrx> entry : executor.getClients().entrySet()) {
             String to = entry.getKey();
             CallbackPrx client = entry.getValue();
-            if (!to.equals(from))
+            if (to.equals(from))
                 continue;
             String response = from + ": " + message;
             client.response(response);

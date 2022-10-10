@@ -39,7 +39,7 @@ public class Client {
                 e.printStackTrace();
                 return;
             }
-            if (args.length > 0) {
+            if (args.length > 0 && !args[0].startsWith("-")) {
                 String req = hostname + ":" + args[0];
                 System.out.println("Request: " + req);
                 try {
