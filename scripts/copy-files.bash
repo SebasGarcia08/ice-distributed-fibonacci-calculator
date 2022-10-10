@@ -10,7 +10,7 @@ hostname=$1
 echo "Deploying to $hostname..."
 echo "Copying files..."
 sshpass -e ssh swarch@$hostname \
-        'rm -rf sebas-aleja && mkdir sebas-aleja'
+        'rm -rf ice-distributed-fibonacci-calculator'
 sshpass -e scp -r -o StrictHostKeyChecking=no \
     . swarch@$hostname:~/sebas-aleja
 echo 'Done.'
