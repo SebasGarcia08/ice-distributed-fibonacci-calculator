@@ -14,6 +14,6 @@ Printer.Proxy=SimplePrinter:tcp -p 9666
 Ice.Default.Host=10.147.19.50
 
 # Client IP
-Callback.Endpoints = default -h localhost -p 9777
+Callback.Endpoints = default -h 10.147.19.124 -p 9777
 
 Ice.MessageSizeMax=1024000

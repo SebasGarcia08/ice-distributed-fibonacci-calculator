@@ -31,19 +31,31 @@ public class Client {
             ObjectPrx objectPrx = adapter.add(obj, Util.stringToIdentity("callback"));
             adapter.activate();
             CallbackPrx callPrx = CallbackPrx.uncheckedCast(objectPrx);
-            run(printer, callPrx);
+            String hostname;
+            try {
+                hostname = java.net.InetAddress.getLocalHost().getHostName();
+            } catch (java.net.UnknownHostException e) {
+                System.out.println("Unknown host");
+                e.printStackTrace();
+                return;
+            }
+            if (args.length > 0) {
+                String req = hostname + ":" + args[0];
+                System.out.println("Request: " + req);
+                try {
+                    printer.printString(req, callPrx);
+                    Thread.sleep(20000);
+                    System.out.println("TIMEOUT");
+                } catch (InterruptedException e) {
+                    System.out.println("Error: " + e);
+                }
+            } else {
+                run(printer, callPrx, hostname);
+            }
         }
     }
 
-    public static void run(PrinterPrx printer, CallbackPrx callback) {
-        String hostname;
-        try {
-            hostname = java.net.InetAddress.getLocalHost().getHostName();
-        } catch (java.net.UnknownHostException e) {
-            System.out.println("Unknown host");
-            e.printStackTrace();
-            return;
-        }
+    public static void run(PrinterPrx printer, CallbackPrx callback, String hostname) {
         System.out.println("Welcome, " + hostname + "!");
 
         Scanner in = new Scanner(System.in);
