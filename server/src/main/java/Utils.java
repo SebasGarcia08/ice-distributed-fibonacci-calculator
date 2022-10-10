@@ -43,11 +43,17 @@ public class Utils {
 
     public static String parseHostname(String message) {
         String[] splittedMsg = message.split(":");
-        return splittedMsg[0].trim();
+        if (splittedMsg.length > 1) {
+            return splittedMsg[0].trim();
+        }
+        return null;
     }
 
     public static String parseMessage(String message) {
         String[] splittedMsg = message.split(":");
-        return splittedMsg[1].trim();
+        if (splittedMsg.length > 1) {
+            return splittedMsg[1].trim();
+        }
+        return null;
     }
 }

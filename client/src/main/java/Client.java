@@ -47,20 +47,25 @@ public class Client {
         System.out.println("Welcome, " + hostname + "!");
 
         Scanner in = new Scanner(System.in);
+        boolean firstPrompt = true;
+
         while (true) {
             String prefix = hostname + ":";
-            System.out.print("You: ");
+            if (firstPrompt) {
+                System.out.print("You: ");
+                firstPrompt = false;
+            } else {
+                System.out.println("");
+            }
             String msg = in.nextLine();
             long startTime = System.nanoTime();
-            String res = "";
+
             printer.printString(prefix + msg, callback);
+
             long elapsed = System.nanoTime() - startTime;
             long elapsedMillis = TimeUnit.MILLISECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
             long elapsedSecs = TimeUnit.SECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
-
-            System.out.println("Server: " + res);
-            System.out.println("Time: " + (elapsedMillis) + " ms, " + (elapsedSecs) + " s");
-            System.out.println("");
+            System.out.print("Time: " + (elapsedMillis) + " ms, " + (elapsedSecs) + " s");
             if (msg.equals("exit")) {
                 System.out.println("Connection closed.");
                 break;

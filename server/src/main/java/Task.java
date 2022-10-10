@@ -28,7 +28,12 @@ public class Task implements Runnable {
 
     public void run() {
         String clientHostName = Utils.parseHostname(message);
-        String msg = Utils.parseMessage(message).toLowerCase();
+        String msg = Utils.parseMessage(message);
+        if (msg == null) {
+            callback.response("0");
+            return;
+        }
+        msg = msg.toLowerCase();
 
         Integer value = Utils.isInteger(msg);
 
@@ -46,7 +51,6 @@ public class Task implements Runnable {
                 send(clientHostName, toHostname, toMessage);
             } else if (msg.equals("exit")) {
                 System.out.println(clientHostName + " left. \n");
-                callback.response("Bye bye!");
             } else {
                 System.out.println(this.message);
                 callback.response("0");
