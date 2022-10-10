@@ -11,9 +11,9 @@ Printer.Proxy=SimplePrinter:tcp -p 9666
 
 # Only listen on the ZeroTier's LIASOn1 interface by default.
 # Server IP
-Ice.Default.Host=10.147.19.50
+Ice.Default.Host=10.147.19.124
 
 # Client IP
-Callback.Endpoints = default -h 10.147.19.124 -p 9777
+Callback.Endpoints = default -h 10.147.19.124  -p 9777
 
 Ice.MessageSizeMax=1024000
