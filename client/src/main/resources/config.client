@@ -9,10 +9,9 @@ Printer.Proxy=SimplePrinter:tcp -p 9666
 #
 #Hello.Proxy=hello:ws -p 10002:udp -p 10000:wss -p 10003
 
-
 # Only listen on the ZeroTier's LIASOn1 interface by default.
 # Server IP
-Ice.Default.Host=localhost
+Ice.Default.Host=10.147.19.124
 
 # Client IP
 Callback.Endpoints = default -h 10.147.19.124  -p 9777
