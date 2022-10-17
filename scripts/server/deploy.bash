@@ -7,10 +7,14 @@ do
                     ;;
                 b) branch=${OPTARG}
                     ;;
-                h) echo "Usage: ./experiment.bash -s <server id> -b <branch>"
-                    echo 'For example: ./experiment.bash -s 1 -b feat/multithread'
-                    echo 'server id: number of the server, if 21 then xhgrid21'
-                    echo 'bramch: branch to deploy, should be a valid branch from https://github.com/SebasGarcia08/ice-distributed-fibonacci-calculator repo ' 
+                h) echo "Usage: bash scripts/server/deploy.bash -s <server_ip> -b <branch>"
+                    echo ""
+                    echo "For example:"
+                    echo ""
+                    echo "bash scripts/server/deploy.bash -s 22 -b feat/multithread"
+                    echo ""
+                    echo 'server id: the id of the server, e.g., if 2, then it refers to hgrid2"'
+                    echo 'branch: branch to deploy, should be a valid branch from https://github.com/SebasGarcia08/ice-distributed-fibonacci-calculator repo ' 
                     exit 0
                     ;;
                 *) echo "Invalid option -${flag}"
