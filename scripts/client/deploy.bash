@@ -66,7 +66,8 @@ echo "Replacing ip adresses in $file_to_replace file..."
 for i in "${!to_replace_arr[@]}"; do
         echo "Replacing '${to_replace_arr[$i]}' with '${new_content_arr[$i]}'"
         base_cmd="cd $repo_dir && bash scripts/utils/replace_text_in_file.bash"
-        cmd_to_adjust_config="$base_cmd "${to_replace_arr[$i]}" "${new_content_arr[$i]}" "$file_to_replace""
+        cmd_to_adjust_config="$base_cmd '"${to_replace_arr[$i]}"' '"${new_content_arr[$i]}"' "$file_to_replace""
+        echo "Running command: $cmd_to_adjust_config"
         sshpass -e ssh -o StrictHostKeyChecking=no \
             swarch@$client_hostname "$cmd_to_adjust_config"
 done
