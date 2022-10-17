@@ -1,18 +1,26 @@
 export SSHPASS='swarch'
 
-while getopts c:s:b:h flag
+while getopts c:s:b:p:h flag
 do 
         case "${flag}" in
                 c) client_id=${OPTARG}
                     ;;
-                s) server_id=${OPTARG}
+                s) server_ip_address=${OPTARG}
                     ;;
                 b) branch=${OPTARG}
                     ;;
-                h) echo "Usage: ./experiment.bash -s <server id> -b <branch>"
-                    echo 'For example: ./experiment.bash -s 1 -b feat/multithread'
-                    echo 'server id: number of the server, if 21 then xhgrid21'
-                    echo 'bramch: branch to deploy, should be a valid branch from https://github.com/SebasGarcia08/ice-distributed-fibonacci-calculator repo ' 
+                p) client_callback_port=${OPTARG}
+                    ;;
+                h) echo "Usage: bash scripts/client/deploy.bash -s <server ip> -b <branch> -c <client id> -p <client callback port>"
+                    echo ""
+                    echo "For example:"
+                    echo ""
+                    echo "bash scripts/client/deploy.bash -s 10.147.19.124 -b feat/multithread -c 3 -p 9012"
+                    echo ""
+                    echo 'server ip: ip address of the server'
+                    echo 'branch: branch to deploy, should be a valid branch from https://github.com/SebasGarcia08/ice-distributed-fibonacci-calculator repo ' 
+                    echo "client id: the id of the client, e.g., if 2, then it refers to hgrid2"
+                    echo "client callback port: the port in which to listen for callback communication"
                     exit 0
                     ;;
                 *) echo "Invalid option -${flag}"
@@ -30,12 +38,9 @@ for i in "${!required_args[@]}"; do
         fi
 done
 
-server_hostname="xhgrid$server_id"
 client_hostname="xhgrid$client_id"
 
-server_ip_address=$(getent hosts $server_hostname | awk '{ print $1 }')
 client_ip_address=$(getent hosts $client_hostname | awk '{ print $1 }')
-client_callback_port="9${client_id}77"
 client_callback_endpoints="default -h $client_ip_address -p $client_callback_port" 
 
 cmd1="cd $repo_dir"
@@ -45,7 +50,7 @@ launch_cmd="${cmd1} && ${cmd2}"
 repo_url="https://github.com/SebasGarcia08/ice-distributed-fibonacci-calculator.git"
 repo_dir="ice-distributed-fibonacci-calculator"
 
-echo "Server hostname: '$server_hostname' ip address: '$server_ip_address'"
+echo "Server ip address: '$server_ip_address'"
 echo "Client hostname: '$client_hostname' ip address: '$client_ip_address'"
 echo "Repo url: '$repo_url', clone dir: '$repo_dir' branch: '$branch'"
 sshpass -e ssh -o StrictHostKeyChecking=no \
