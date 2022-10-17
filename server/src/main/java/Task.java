@@ -52,7 +52,9 @@ public class Task implements Runnable {
                 String toMessage = msg.substring(toHostname.length(), msg.length());
                 send(clientHostName, toHostname, toMessage);
             } else if (msg.equals("exit")) {
-                System.out.println(clientHostName + " left. \n");
+                String leftMessage = clientHostName + " left.";
+                System.out.println(leftMessage + "\n");
+                broadcast(clientHostName, leftMessage);
             } else {
                 System.out.println(this.message);
                 callback.response("0");
