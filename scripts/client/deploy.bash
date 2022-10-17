@@ -28,8 +28,9 @@ do
         esac
 done
 
-required_args=(client_id server_id branch)
-flag_names=(c s b)
+
+required_args=(client_id server_ip_address branch client_callback_port)
+flag_names=(c s b p)
 
 for i in "${!required_args[@]}"; do
         if [ -z "${!required_args[$i]}" ]; then
@@ -43,18 +44,37 @@ client_hostname="xhgrid$client_id"
 client_ip_address=$(getent hosts $client_hostname | awk '{ print $1 }')
 client_callback_endpoints="default -h $client_ip_address -p $client_callback_port" 
 
-cmd1="cd $repo_dir"
-cmd2="java -jar client/build/libs/client.jar --Ice.Default.Host=${server_ip_address} --Callback.Endpoints=${client_callback_endpoints}"
-launch_cmd="${cmd1} && ${cmd2}"
-
 repo_url="https://github.com/SebasGarcia08/ice-distributed-fibonacci-calculator.git"
 repo_dir="ice-distributed-fibonacci-calculator"
+
+cmd1="cd $repo_dir"
+cmd2="java -jar client/build/libs/client.jar"
+launch_cmd="${cmd1} && ${cmd2}"
 
 echo "Server ip address: '$server_ip_address'"
 echo "Client hostname: '$client_hostname' ip address: '$client_ip_address'"
 echo "Repo url: '$repo_url', clone dir: '$repo_dir' branch: '$branch'"
 sshpass -e ssh -o StrictHostKeyChecking=no \
     swarch@$client_hostname "rm -rf $repo_dir; git clone --branch $branch $repo_url "
+
+echo "------------------------------------"
+to_replace_arr=("Ice.Default.Host=10.147.19.124" "Callback.Endpoints = default -h 10.147.19.124  -p 9777")
+new_content_arr=("Ice.Default.Host=${server_ip_address}" "Callback.Endpoints = ${client_callback_endpoints}")
+file_to_replace="client/src/main/resources/config.client"
+echo "Replacing ip adresses in $file_to_replace file..."
+
+for i in "${!to_replace_arr[@]}"; do
+        echo "Replacing '${to_replace_arr[$i]}' with '${new_content_arr[$i]}'"
+        base_cmd="cd $repo_dir && bash scripts/utils/replace_text_in_file.bash"
+        cmd_to_adjust_config="$base_cmd "${to_replace_arr[$i]}" "${new_content_arr[$i]}" "$file_to_replace""
+        sshpas -e ssh -o StrictHostKeyChecking=no \
+            swarch@$client_hostname "$cmd_to_adjust_config"
+done
+
+echo "Done."
+echo "Now config file looks like this"
+cat $file_to_replace
+echo "------------------------------------"
 
 echo 'Compiling...'
 sshpass -e ssh -o StrictHostKeyChecking=no \
