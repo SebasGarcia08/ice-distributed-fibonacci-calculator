@@ -46,8 +46,10 @@ public class Task implements Runnable {
                 broadcast(clientHostName, msg.replace("bc", ""));
             } else if (msg.startsWith("to")) {
                 msg = msg.replace("to", "").trim();
-                String toHostname = Utils.parseHostname(msg);
-                String toMessage = Utils.parseMessage(msg);
+                System.out.println(msg);
+                String[] splitted = msg.split(" ");
+                String toHostname = splitted[0];
+                String toMessage = msg.substring(toHostname.length(), msg.length());
                 send(clientHostName, toHostname, toMessage);
             } else if (msg.equals("exit")) {
                 System.out.println(clientHostName + " left. \n");
@@ -126,7 +128,7 @@ public class Task implements Runnable {
 
     public void respondListClients() throws InterruptedException {
         ArrayList<String> clients = listClients();
-        String response = "Clients: ";
+        String response = "\nConnected clients: \n";
         for (String client : clients) {
             response += "\t" + client + "\n";
         }

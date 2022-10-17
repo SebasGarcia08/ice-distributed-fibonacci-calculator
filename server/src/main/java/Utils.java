@@ -52,7 +52,11 @@ public class Utils {
     public static String parseMessage(String message) {
         String[] splittedMsg = message.split(":");
         if (splittedMsg.length > 1) {
-            return splittedMsg[1].trim();
+            String parsedMessage = "";
+            for (int i = 1; i < splittedMsg.length; i++) {
+                parsedMessage += splittedMsg[i];
+            }
+            return parsedMessage.trim();
         }
         return null;
     }
