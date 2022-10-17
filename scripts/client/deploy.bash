@@ -35,6 +35,12 @@ client_hostname="xhgrid$client_id"
 
 server_ip_address=$(getent hosts $server_hostname | awk '{ print $1 }')
 client_ip_address=$(getent hosts $client_hostname | awk '{ print $1 }')
+client_callback_port="9${client_id}77"
+client_callback_endpoints="default -h $client_ip_address -p $client_callback_port" 
+
+cmd1="cd $repo_dir"
+cmd2="java -jar client/build/libs/client.jar --Ice.Default.Host=${server_ip_address} --Callback.Endpoints=${client_callback_endpoints}"
+launch_cmd="${cmd1} && ${cmd2}"
 
 repo_url="https://github.com/SebasGarcia08/ice-distributed-fibonacci-calculator.git"
 repo_dir="ice-distributed-fibonacci-calculator"
@@ -49,6 +55,8 @@ echo 'Compiling...'
 sshpass -e ssh -o StrictHostKeyChecking=no \
     swarch@$client_hostname "cd $repo_dir && ./gradlew build"
 
-echo "Running client with ip address: $client_ip_address"
+echo "Running client with ip address: $client_ip_address (callback on port $client_callback_port)"
+echo "Executing command:"
+echo $launch_cmd
 sshpass -e ssh -o StrictHostKeyChecking=no \
-    swarch@$client_hostname "cd $repo_dir && java -jar client/build/libs/client.jar --Ice.Default.Host=$server_ip_address --Callback.Endpoints=default -h $client_ip_address -p 9777" 
+    swarch@$client_hostname $launch_cmd 
