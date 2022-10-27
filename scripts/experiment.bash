@@ -1,11 +1,9 @@
 #!/bin/bash
 confirmed=false
-while getopts 'i':'n':'s':'y':'h' flag
+while getopts 'c':'s':'y':'h' flag
 do 
         case "${flag}" in
-                i) start_idx=${OPTARG}
-                    ;;
-                n) num_clients=${OPTARG}
+                c) client_ids=${OPTARG}
                     ;;
                 s) server_ip_address=${OPTARG}
                     ;;
@@ -23,8 +21,8 @@ do
         esac
 done
 
-required_args=(start_idx num_clients server_ip_address)
-flag_names=(i n s)
+required_args=(client_ids server_ip_address)
+flag_names=(c s)
 
 for i in "${!required_args[@]}"; do
         if [ -z "${!required_args[$i]}" ]; then
@@ -33,9 +31,9 @@ for i in "${!required_args[@]}"; do
         fi
 done
 
+clients_array=(${client_ids//,/ })
 echo 'Running experiment with the following parameters:'
-echo "Start index: $start_idx"
-echo "Number of clients: $num_clients"
+echo "Clients: $client_ids"
 echo "Server ip address: $server_ip_address"
 
 if [ "$confirmed" = false ]; then
@@ -47,7 +45,7 @@ if [ "$confirmed" = false ]; then
         fi
 fi
 
-for id in $(seq $start_idx $num_clients); do
+for id in "${clients_array[@]}"; do
     hostname="xhgrid$id"
     while true;
     do
@@ -55,7 +53,10 @@ for id in $(seq $start_idx $num_clients); do
       if [ $? -eq 0 ]
       then 
         echo "$hostname is up, deploying..."
-        bash scripts/client/deploy.bash -s $server_ip_address -b feat/multithread -c $id -p 901$id > output-$id.log &
+        bash scripts/client/deploy.bash -s $server_ip_address -b feat/multithread -c $id -p 9777 >> logs/$hostname-output.log 2>&1 &
+        break
+      else
+        echo "$hostname is down"
         break
       fi
     done

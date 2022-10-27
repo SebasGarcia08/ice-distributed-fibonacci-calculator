@@ -29,24 +29,25 @@ for i in "${!required_args[@]}"; do
 done
 
 server_hostname="xhgrid$server_id"
+clients_array=(${client_ids//,/ })
+
+echo 'Running experiment with the following parameters:'
 server_ip_address=$(getent hosts $server_hostname | awk '{ print $1 }')
 echo "Server hostname: '$server_hostname' ip address: '$server_ip_address'"
-bash scripts/copy-files.bash $server_hostname
+echo "Clients:"
 
-echo 'Compiling...'
-sshpass -e ssh -o StrictHostKeyChecking=no \
-    swarch@$server_hostname 'cd sebas-aleja && ./gradlew build'
-
-echo 'Running server'
-sshpass -e ssh -o StrictHostKeyChecking=no \
-    swarch@$server_hostname "cd sebas-aleja && java -jar server/build/libs/server.jar --Ice.Default.Host=$server_ip_address"
-
-## Deploy clients
-exit 0
-echo "Clients: "
-clients_array=(${client_ids//,/ })
-for client_id in "${clients_array[@]}"; do
-        client_hostname="xhgrid$client_id"
-        bash scripts/copy-files.bash $client_hostname
-        echo "$client_hostname"
+for id in "${clients_array[@]}"; do
+    client_hostname="xhgrid$id"
+    sshpass -p swarch ssh swarch@$client_hostname 'killall java' > /dev/null 2>&1
+    client_ip_address=$(getent hosts $client_hostname | awk '{ print $1 }')
+    echo "*      $client_hostname:' ip address: '$client_ip_address'"
 done
+
+echo 'Starting server...'
+server_out_file="logs/server-$server_hostname-output.log"
+bash scripts/server/deploy.bash -s $server_id -b feat/multithread >> $server_out_file 2>&1 &
+sleep 10
+echo "Server started, deploying clients..."
+
+bash scripts/experiment.bash -c $client_ids -s $server_ip_address -y true
+exit 0
