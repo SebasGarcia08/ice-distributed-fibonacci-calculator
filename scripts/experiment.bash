@@ -1,14 +1,13 @@
 #!/bin/bash
-while getopts 'n':'f':'w':'m':'h' flag
+confirmed=false
+while getopts 'i':'n':'s':'y':'h' flag
 do 
         case "${flag}" in
+                i) start_idx=${OPTARG}
+                    ;;
                 n) num_clients=${OPTARG}
                     ;;
-                f) max_fib=${OPTARG}
-                    ;;
-                w) max_wait=${OPTARG}
-                    ;;
-                m) max_heap=${OPTARG}
+                s) server_ip_address=${OPTARG}
                     ;;
                 y) confirmed=true
                     ;;
@@ -24,8 +23,8 @@ do
         esac
 done
 
-required_args=(num_clients max_fib max_wait max_heap)
-flag_names=(n f w m)
+required_args=(start_idx num_clients server_ip_address)
+flag_names=(i n s)
 
 for i in "${!required_args[@]}"; do
         if [ -z "${!required_args[$i]}" ]; then
@@ -35,13 +34,12 @@ for i in "${!required_args[@]}"; do
 done
 
 echo 'Running experiment with the following parameters:'
+echo "Start index: $start_idx"
 echo "Number of clients: $num_clients"
-echo "Max fib: $max_fib"
-echo "Max wait: $max_wait"
-echo "Max heap: $max_heap"
+echo "Server ip address: $server_ip_address"
 
 if [ "$confirmed" = false ]; then
-        echo 'Are you sure you want to continue? (y/n)'
+        echo 'Are you sure you want to continue? [y/n]: '
         read -r confirmed
         if [ "$confirmed" != 'y' ]; then
                 echo 'Aborting...'
@@ -49,20 +47,16 @@ if [ "$confirmed" = false ]; then
         fi
 fi
 
-echo "Compressing files..."
-zip -r sebas-aleja.zip .
-echo 'Done.'
-
-echo "Installing sshpass..."
-apt-get install sshpass
-echo 'Done.'
-
-echo 'Compiling...'
-#./gradlew build
-
-for i in $(seq 1 $num_clients); do
-    hostname="xhgrid$i"
-    echo "Copying to $hostname"
-    sshpass -p "swarch" scp sebas-aleja.zip swarch@$hostname:~/ 
-    echo 'Done.'
+for id in $(seq $start_idx $num_clients); do
+    hostname="xhgrid$id"
+    while true;
+    do
+      ping -c1 $hostname > /dev/null
+      if [ $? -eq 0 ]
+      then 
+        echo "$hostname is up, deploying..."
+        bash scripts/client/deploy.bash -s $server_ip_address -b feat/multithread -c $id -p 901$id > output-$id.log &
+        break
+      fi
+    done
 done

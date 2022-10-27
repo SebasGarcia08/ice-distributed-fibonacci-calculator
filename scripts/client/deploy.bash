@@ -48,7 +48,7 @@ repo_url="https://github.com/SebasGarcia08/ice-distributed-fibonacci-calculator.
 repo_dir="ice-distributed-fibonacci-calculator"
 
 cmd1="cd $repo_dir"
-cmd2="java -jar client/build/libs/client.jar"
+cmd2="java -jar client/build/libs/client.jar < input.txt"
 launch_cmd="${cmd1} && ${cmd2}"
 
 echo "Server ip address: '$server_ip_address'"
@@ -85,4 +85,4 @@ echo "Running client with ip address: $client_ip_address (callback on port $clie
 echo "Executing command:"
 echo $launch_cmd
 sshpass -e ssh -o StrictHostKeyChecking=no \
-    swarch@$client_hostname $launch_cmd 
+    swarch@$client_hostname $launch_cmd &

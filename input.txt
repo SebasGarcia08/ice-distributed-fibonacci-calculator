@@ -14,7 +14,7 @@ wait 3
 10000000
 wait 3
 100000000
-wait 100
+wait 120
 list clients
 wait 3
 exit
