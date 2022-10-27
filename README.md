@@ -1,3 +1,10 @@
+## Launch experiment
+
+In order to deploy server on xhgrid2 and clients on servers 3,..., 22, run:
+
+```bash
+bash scripts/main.bash -s 2 -c 3,4,5,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22
+```
 ## Server
 
 In order to run the server:
