@@ -1,0 +1,848 @@
+Server hostname: 'xhgrid2' ip address: '10.147.19.231'
+Repo url: 'https://github.com/SebasGarcia08/ice-distributed-fibonacci-calculator.git', clone dir: 'ice-distributed-fibonacci-calculator' branch: 'feat/multithread'
+Cloning into 'ice-distributed-fibonacci-calculator'...
+Compiling...
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+> Task :client:compileSlice
+Unable to locate slice directory in iceHome (null)
+
+> Task :client:compileJava
+> Task :client:processResources
+> Task :client:classes
+> Task :client:jar
+> Task :client:startScripts
+> Task :client:distTar
+> Task :client:distZip
+> Task :client:assemble
+> Task :client:compileTestJava NO-SOURCE
+> Task :client:processTestResources NO-SOURCE
+> Task :client:testClasses UP-TO-DATE
+> Task :client:test NO-SOURCE
+> Task :client:check UP-TO-DATE
+> Task :client:build
+
+> Task :server:compileSlice
+Unable to locate slice directory in iceHome (null)
+
+> Task :server:compileJava
+> Task :server:processResources
+> Task :server:classes
+> Task :server:jar
+> Task :server:startScripts
+> Task :server:distTar
+> Task :server:distZip
+> Task :server:assemble
+> Task :server:compileTestJava NO-SOURCE
+> Task :server:processTestResources NO-SOURCE
+> Task :server:testClasses UP-TO-DATE
+> Task :server:test NO-SOURCE
+> Task :server:check UP-TO-DATE
+> Task :server:build
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.6/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 3s
+14 actionable tasks: 14 executed
+Running server on ip address: 10.147.19.231
+Exception in thread "main" com.zeroc.Ice.SocketException
+    error = 0
+	at com.zeroc.IceInternal.Network.doBind(Network.java:406)
+	at com.zeroc.IceInternal.TcpAcceptor.listen(TcpAcceptor.java:36)
+	at com.zeroc.IceInternal.IncomingConnectionFactory.createAcceptor(IncomingConnectionFactory.java:676)
+	at com.zeroc.IceInternal.IncomingConnectionFactory.<init>(IncomingConnectionFactory.java:493)
+	at com.zeroc.Ice.ObjectAdapterI.<init>(ObjectAdapterI.java:1027)
+	at com.zeroc.IceInternal.ObjectAdapterFactory.createObjectAdapter(ObjectAdapterFactory.java:180)
+	at com.zeroc.Ice.CommunicatorI.createObjectAdapter(CommunicatorI.java:111)
+	at Server.main(Server.java:22)
+Caused by: java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:555)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:337)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:89)
+	at com.zeroc.IceInternal.Network.doBind(Network.java:400)
+	... 7 more
+Server hostname: 'xhgrid2' ip address: '10.147.19.231'
+Repo url: 'https://github.com/SebasGarcia08/ice-distributed-fibonacci-calculator.git', clone dir: 'ice-distributed-fibonacci-calculator' branch: 'feat/multithread'
+Cloning into 'ice-distributed-fibonacci-calculator'...
+Compiling...
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+> Task :client:compileSlice
+Unable to locate slice directory in iceHome (null)
+
+> Task :client:compileJava
+> Task :client:processResources
+> Task :client:classes
+> Task :client:jar
+> Task :client:startScripts
+> Task :client:distTar
+> Task :client:distZip
+> Task :client:assemble
+> Task :client:compileTestJava NO-SOURCE
+> Task :client:processTestResources NO-SOURCE
+> Task :client:testClasses UP-TO-DATE
+> Task :client:test NO-SOURCE
+> Task :client:check UP-TO-DATE
+> Task :client:build
+
+> Task :server:compileSlice
+Unable to locate slice directory in iceHome (null)
+
+> Task :server:compileJava
+> Task :server:processResources
+> Task :server:classes
+> Task :server:jar
+> Task :server:startScripts
+> Task :server:distTar
+> Task :server:distZip
+> Task :server:assemble
+> Task :server:compileTestJava NO-SOURCE
+> Task :server:processTestResources NO-SOURCE
+> Task :server:testClasses UP-TO-DATE
+> Task :server:test NO-SOURCE
+> Task :server:check UP-TO-DATE
+> Task :server:build
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.6/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 3s
+14 actionable tasks: 14 executed
+Running server on ip address: 10.147.19.231
+hgrid5 joined. 
+
+Broadcasting message from hgrid5:bc: hey!
+Calculating fibonacci for 1E1
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E1
+[INFO] Sent response of 10-th Fibonacci to hgrid5 took: 0 s (16 ms)
+hgrid4 joined. 
+
+Broadcasting message from hgrid4:bc: hey!
+hgrid5:wait 3
+Calculating fibonacci for 1E1
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E1
+[INFO] Sent response of 10-th Fibonacci to hgrid4 took: 0 s (11 ms)
+hgrid4:wait 3
+hgrid7 joined. 
+
+Broadcasting message from hgrid7:bc: hey!
+Calculating fibonacci for 1E1
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E1
+[INFO] Sent response of 10-th Fibonacci to hgrid7 took: 0 s (7 ms)
+hgrid7:wait 3
+hgrid3 joined. 
+
+Broadcasting message from hgrid3:bc: hey!
+Calculating fibonacci for 1E1
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E1
+[INFO] Sent response of 10-th Fibonacci to hgrid3 took: 0 s (12 ms)
+hgrid3:wait 3
+hgrid12 joined. 
+
+Broadcasting message from hgrid12:bc: hey!
+Calculating fibonacci for 1E1
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E1
+[INFO] Sent response of 10-th Fibonacci to hgrid12 took: 0 s (7 ms)
+hgrid12:wait 3
+hgrid9 joined. 
+
+Broadcasting message from hgrid9:bc: hey!
+Calculating fibonacci for 1E1
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E1
+[INFO] Sent response of 10-th Fibonacci to hgrid9 took: 0 s (9 ms)
+Calculating fibonacci for 1E2
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E2
+[INFO] Sent response of 100-th Fibonacci to hgrid5 took: 0 s (3 ms)
+hgrid9:wait 3
+hgrid5:wait 3
+Calculating fibonacci for 1E2
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E2
+[INFO] Sent response of 100-th Fibonacci to hgrid4 took: 0 s (1 ms)
+hgrid4:wait 3
+Calculating fibonacci for 1E2
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E2
+[INFO] Sent response of 100-th Fibonacci to hgrid7 took: 0 s (2 ms)
+hgrid10 joined. 
+
+Broadcasting message from hgrid10:bc: hey!
+hgrid7:wait 3
+Calculating fibonacci for 1E2
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E2
+[INFO] Sent response of 100-th Fibonacci to hgrid3 took: 0 s (1 ms)
+Calculating fibonacci for 1E1
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E1
+[INFO] Sent response of 10-th Fibonacci to hgrid10 took: 0 s (13 ms)
+hgrid3:wait 3
+hgrid10:wait 3
+Calculating fibonacci for 1E2
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E2
+[INFO] Sent response of 100-th Fibonacci to hgrid12 took: 0 s (1 ms)
+hgrid12:wait 3
+Calculating fibonacci for 1E2
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E2
+[INFO] Sent response of 100-th Fibonacci to hgrid9 took: 0 s (1 ms)
+Calculating fibonacci for 1E3
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E3
+[INFO] Sent response of 1000-th Fibonacci to hgrid5 took: 0 s (1 ms)
+hgrid9:wait 3
+hgrid5:wait 3
+Calculating fibonacci for 1E3
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E3
+[INFO] Sent response of 1000-th Fibonacci to hgrid4 took: 0 s (2 ms)
+hgrid4:wait 3
+Calculating fibonacci for 1E3
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E3
+[INFO] Sent response of 1000-th Fibonacci to hgrid7 took: 0 s (2 ms)
+Calculating fibonacci for 1E3
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E3
+[INFO] Sent response of 1000-th Fibonacci to hgrid3 took: 0 s (1 ms)
+hgrid7:wait 3
+hgrid3:wait 3
+Calculating fibonacci for 1E2
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E2
+[INFO] Sent response of 100-th Fibonacci to hgrid10 took: 0 s (2 ms)
+hgrid10:wait 3
+Calculating fibonacci for 1E3
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E3
+[INFO] Sent response of 1000-th Fibonacci to hgrid12 took: 0 s (1 ms)
+hgrid12:wait 3
+Calculating fibonacci for 1E3
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E3
+[INFO] Sent response of 1000-th Fibonacci to hgrid9 took: 0 s (1 ms)
+Calculating fibonacci for 1E4
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E4
+[INFO] Sent response of 10000-th Fibonacci to hgrid5 took: 0 s (3 ms)
+hgrid9:wait 3
+hgrid5:wait 3
+Calculating fibonacci for 1E4
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E4
+[INFO] Sent response of 10000-th Fibonacci to hgrid4 took: 0 s (3 ms)
+hgrid4:wait 3
+Calculating fibonacci for 1E4
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E4
+[INFO] Sent response of 10000-th Fibonacci to hgrid7 took: 0 s (3 ms)
+hgrid7:wait 3
+Calculating fibonacci for 1E4
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E4
+[INFO] Sent response of 10000-th Fibonacci to hgrid3 took: 0 s (2 ms)
+hgrid3:wait 3
+Calculating fibonacci for 1E3
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E3
+[INFO] Sent response of 1000-th Fibonacci to hgrid10 took: 0 s (1 ms)
+hgrid10:wait 3
+Calculating fibonacci for 1E4
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E4
+[INFO] Sent response of 10000-th Fibonacci to hgrid12 took: 0 s (3 ms)
+hgrid12:wait 3
+Calculating fibonacci for 1E4
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E4
+[INFO] Sent response of 10000-th Fibonacci to hgrid9 took: 0 s (2 ms)
+Calculating fibonacci for 1E5
+[INFO] Took  0 s (3 ms) to calculate fibonacci of 1E5
+hgrid9:wait 3
+[INFO] Sent response of 100000-th Fibonacci to hgrid5 took: 0 s (49 ms)
+hgrid5:wait 3
+Calculating fibonacci for 1E5
+[INFO] Took  0 s (2 ms) to calculate fibonacci of 1E5
+[INFO] Sent response of 100000-th Fibonacci to hgrid4 took: 0 s (13 ms)
+hgrid4:wait 3
+Calculating fibonacci for 1E5
+[INFO] Took  0 s (1 ms) to calculate fibonacci of 1E5
+[INFO] Sent response of 100000-th Fibonacci to hgrid7 took: 0 s (11 ms)
+hgrid7:wait 3
+Calculating fibonacci for 1E5
+[INFO] Took  0 s (1 ms) to calculate fibonacci of 1E5
+[INFO] Sent response of 100000-th Fibonacci to hgrid3 took: 0 s (12 ms)
+hgrid3:wait 3
+Calculating fibonacci for 1E4
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E4
+[INFO] Sent response of 10000-th Fibonacci to hgrid10 took: 0 s (2 ms)
+hgrid10:wait 3
+hgrid17 joined. 
+
+Broadcasting message from hgrid17:bc: hey!
+Calculating fibonacci for 1E1
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E1
+[INFO] Sent response of 10-th Fibonacci to hgrid17 took: 0 s (8 ms)
+hgrid17:wait 3
+hgrid15 joined. 
+
+Broadcasting message from hgrid15:bc: hey!
+Calculating fibonacci for 1E1
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E1
+[INFO] Sent response of 10-th Fibonacci to hgrid15 took: 0 s (8 ms)
+hgrid16 joined. 
+
+Broadcasting message from hgrid16:bc: hey!
+hgrid15:wait 3
+Calculating fibonacci for 1E1
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E1
+[INFO] Sent response of 10-th Fibonacci to hgrid16 took: 0 s (8 ms)
+hgrid16:wait 3
+Calculating fibonacci for 1E5
+[INFO] Took  0 s (1 ms) to calculate fibonacci of 1E5
+[INFO] Sent response of 100000-th Fibonacci to hgrid12 took: 0 s (10 ms)
+hgrid12:wait 3
+Calculating fibonacci for 1E5
+[INFO] Took  0 s (1 ms) to calculate fibonacci of 1E5
+[INFO] Sent response of 100000-th Fibonacci to hgrid9 took: 0 s (10 ms)
+hgrid9:wait 3
+Calculating fibonacci for 1E6
+[INFO] Took  0 s (35 ms) to calculate fibonacci of 1E6
+hgrid5:wait 3
+Calculating fibonacci for 1E6
+Calculating fibonacci for 1E6
+[INFO] Took  0 s (57 ms) to calculate fibonacci of 1E6
+[INFO] Sent response of 1000000-th Fibonacci to hgrid5 took: 0 s (179 ms)
+[INFO] Took  0 s (23 ms) to calculate fibonacci of 1E6
+hgrid4:wait 3
+[INFO] Sent response of 1000000-th Fibonacci to hgrid4 took: 0 s (129 ms)
+Calculating fibonacci for 1E6
+[INFO] Sent response of 1000000-th Fibonacci to hgrid7 took: 0 s (111 ms)
+[INFO] Took  0 s (23 ms) to calculate fibonacci of 1E6
+hgrid7:wait 3
+hgrid3:wait 3
+[INFO] Sent response of 1000000-th Fibonacci to hgrid3 took: 0 s (131 ms)
+Calculating fibonacci for 1E5
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E5
+[INFO] Sent response of 100000-th Fibonacci to hgrid10 took: 0 s (10 ms)
+hgrid10:wait 3
+hgrid19 joined. 
+
+Broadcasting message from hgrid19:bc: hey!
+Calculating fibonacci for 1E1
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E1
+[INFO] Sent response of 10-th Fibonacci to hgrid19 took: 0 s (8 ms)
+hgrid19:wait 3
+Calculating fibonacci for 1E2
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E2
+[INFO] Sent response of 100-th Fibonacci to hgrid17 took: 0 s (2 ms)
+hgrid17:wait 3
+Calculating fibonacci for 1E2
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E2
+[INFO] Sent response of 100-th Fibonacci to hgrid15 took: 0 s (1 ms)
+hgrid15:wait 3
+Calculating fibonacci for 1E2
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E2
+[INFO] Sent response of 100-th Fibonacci to hgrid16 took: 0 s (2 ms)
+hgrid16:wait 3
+Calculating fibonacci for 1E6
+[INFO] Took  0 s (18 ms) to calculate fibonacci of 1E6
+hgrid12:wait 3
+[INFO] Sent response of 1000000-th Fibonacci to hgrid12 took: 0 s (93 ms)
+Calculating fibonacci for 1E6
+[INFO] Took  0 s (14 ms) to calculate fibonacci of 1E6
+hgrid9:wait 3
+[INFO] Sent response of 1000000-th Fibonacci to hgrid9 took: 0 s (76 ms)
+Calculating fibonacci for 1E7
+hgrid5:wait 3
+Calculating fibonacci for 1E7
+hgrid4:wait 3
+Calculating fibonacci for 1E7
+hgrid7:wait 3
+Calculating fibonacci for 1E7
+Calculating fibonacci for 1E6
+[INFO] Took  0 s (18 ms) to calculate fibonacci of 1E6
+hgrid3:wait 3
+hgrid10:wait 3
+[INFO] Sent response of 1000000-th Fibonacci to hgrid10 took: 0 s (156 ms)
+[INFO] Took  0 s (751 ms) to calculate fibonacci of 1E7
+[INFO] Took  0 s (841 ms) to calculate fibonacci of 1E7
+Calculating fibonacci for 1E2
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E2
+[INFO] Sent response of 100-th Fibonacci to hgrid19 took: 0 s (1 ms)
+hgrid19:wait 3
+[INFO] Took  0 s (940 ms) to calculate fibonacci of 1E7
+Calculating fibonacci for 1E3
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E3
+[INFO] Sent response of 1000-th Fibonacci to hgrid17 took: 0 s (2 ms)
+hgrid17:wait 3
+[INFO] Took  0 s (967 ms) to calculate fibonacci of 1E7
+Calculating fibonacci for 1E3
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E3
+[INFO] Sent response of 1000-th Fibonacci to hgrid15 took: 0 s (2 ms)
+Calculating fibonacci for 1E3
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E3
+[INFO] Sent response of 1000-th Fibonacci to hgrid16 took: 0 s (2 ms)
+hgrid15:wait 3
+hgrid16:wait 3
+[INFO] Sent response of 10000000-th Fibonacci to hgrid5 took: 2 s (2551 ms)
+Calculating fibonacci for 1E7
+hgrid12:wait 3
+[INFO] Sent response of 10000000-th Fibonacci to hgrid4 took: 2 s (2498 ms)
+[INFO] Took  0 s (369 ms) to calculate fibonacci of 1E7
+Calculating fibonacci for 1E7
+Calculating fibonacci for 1E8
+hgrid9:wait 3
+hgrid5:wait 240
+Calculating fibonacci for 1E8
+Calculating fibonacci for 1E8
+hgrid4:wait 240
+hgrid7:wait 240
+[INFO] Sent response of 10000000-th Fibonacci to hgrid7 took: 3 s (3343 ms)
+Calculating fibonacci for 1E8
+Calculating fibonacci for 1E7
+[INFO] Sent response of 10000000-th Fibonacci to hgrid3 took: 3 s (3420 ms)
+hgrid3:wait 240
+[INFO] Took  0 s (849 ms) to calculate fibonacci of 1E7
+hgrid10:wait 3
+Calculating fibonacci for 1E3
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E3
+[INFO] Sent response of 1000-th Fibonacci to hgrid19 took: 0 s (2 ms)
+hgrid19:wait 3
+Calculating fibonacci for 1E4
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E4
+[INFO] Sent response of 10000-th Fibonacci to hgrid17 took: 0 s (173 ms)
+[INFO] Took  0 s (873 ms) to calculate fibonacci of 1E7
+hgrid17:wait 3
+Calculating fibonacci for 1E4
+[INFO] Took  0 s (3 ms) to calculate fibonacci of 1E4
+[INFO] Sent response of 10000-th Fibonacci to hgrid15 took: 0 s (7 ms)
+Calculating fibonacci for 1E4
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E4
+[INFO] Sent response of 10000-th Fibonacci to hgrid16 took: 0 s (3 ms)
+hgrid15:wait 3
+hgrid16:wait 3
+[INFO] Sent response of 10000000-th Fibonacci to hgrid12 took: 3 s (3113 ms)
+Calculating fibonacci for 1E8
+hgrid12:wait 240
+Calculating fibonacci for 1E8
+hgrid9:wait 240
+[INFO] Sent response of 10000000-th Fibonacci to hgrid9 took: 3 s (3340 ms)
+hgrid22 joined. 
+
+Broadcasting message from hgrid22:bc: hey!
+[INFO] Sent response of 10000000-th Fibonacci to hgrid10 took: 3 s (3298 ms)
+Calculating fibonacci for 1E8
+Calculating fibonacci for 1E1
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E1
+[INFO] Sent response of 10-th Fibonacci to hgrid22 took: 0 s (15 ms)
+hgrid10:wait 240
+hgrid22:wait 3
+Calculating fibonacci for 1E4
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E4
+[INFO] Sent response of 10000-th Fibonacci to hgrid19 took: 0 s (6 ms)
+hgrid19:wait 3
+Calculating fibonacci for 1E5
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E5
+[INFO] Sent response of 100000-th Fibonacci to hgrid17 took: 0 s (178 ms)
+hgrid17:wait 3
+Calculating fibonacci for 1E5
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E5
+[INFO] Sent response of 100000-th Fibonacci to hgrid15 took: 0 s (9 ms)
+Calculating fibonacci for 1E5
+[INFO] Took  0 s (1 ms) to calculate fibonacci of 1E5
+[INFO] Sent response of 100000-th Fibonacci to hgrid16 took: 0 s (12 ms)
+hgrid15:wait 3
+hgrid16:wait 3
+Calculating fibonacci for 1E2
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E2
+[INFO] Sent response of 100-th Fibonacci to hgrid22 took: 0 s (2 ms)
+hgrid22:wait 3
+Calculating fibonacci for 1E5
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E5
+[INFO] Sent response of 100000-th Fibonacci to hgrid19 took: 0 s (10 ms)
+hgrid19:wait 3
+Calculating fibonacci for 1E6
+[INFO] Took  0 s (35 ms) to calculate fibonacci of 1E6
+hgrid17:wait 3
+[INFO] Sent response of 1000000-th Fibonacci to hgrid17 took: 0 s (145 ms)
+Calculating fibonacci for 1E6
+[INFO] Took  0 s (49 ms) to calculate fibonacci of 1E6
+Calculating fibonacci for 1E6
+[INFO] Took  0 s (40 ms) to calculate fibonacci of 1E6
+[INFO] Sent response of 1000000-th Fibonacci to hgrid15 took: 0 s (199 ms)
+hgrid15:wait 3
+[INFO] Sent response of 1000000-th Fibonacci to hgrid16 took: 0 s (139 ms)
+hgrid16:wait 3
+Calculating fibonacci for 1E3
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E3
+[INFO] Sent response of 1000-th Fibonacci to hgrid22 took: 0 s (2 ms)
+hgrid22:wait 3
+Calculating fibonacci for 1E6
+[INFO] Took  0 s (21 ms) to calculate fibonacci of 1E6
+[INFO] Sent response of 1000000-th Fibonacci to hgrid19 took: 0 s (107 ms)
+hgrid19:wait 3
+Calculating fibonacci for 1E7
+hgrid17:wait 3
+Calculating fibonacci for 1E7
+hgrid15:wait 3
+Calculating fibonacci for 1E7
+hgrid16:wait 3
+[INFO] Took  1 s (1215 ms) to calculate fibonacci of 1E7
+[INFO] Took  0 s (949 ms) to calculate fibonacci of 1E7
+[INFO] Took  1 s (1155 ms) to calculate fibonacci of 1E7
+Calculating fibonacci for 1E4
+[INFO] Took  0 s (0 ms) to calculate fibonacci of 1E4
+[INFO] Sent response of 10000-th Fibonacci to hgrid22 took: 0 s (10 ms)
+hgrid22:wait 3
+Calculating fibonacci for 1E7
+hgrid19:wait 3
+Calculating fibonacci for 1E8
+hgrid17:wait 240
+Calculating fibonacci for 1E8
+Calculating fibonacci for 1E8
+hgrid15:wait 240
+hgrid16:wait 240
+[INFO] Took  1 s (1711 ms) to calculate fibonacci of 1E7
+Calculating fibonacci for 1E5
+[INFO] Took  0 s (3 ms) to calculate fibonacci of 1E5
+[INFO] Sent response of 100000-th Fibonacci to hgrid22 took: 0 s (21 ms)
+Calculating fibonacci for 1E8
+hgrid22:wait 3
+hgrid19:wait 240
+[INFO] Sent response of 10000000-th Fibonacci to hgrid15 took: 6 s (6293 ms)
+[INFO] Sent response of 10000000-th Fibonacci to hgrid17 took: 6 s (6931 ms)
+[INFO] Sent response of 10000000-th Fibonacci to hgrid16 took: 6 s (6695 ms)
+Calculating fibonacci for 1E6
+hgrid22:wait 3
+[INFO] Took  0 s (62 ms) to calculate fibonacci of 1E6
+[INFO] Sent response of 1000000-th Fibonacci to hgrid22 took: 0 s (185 ms)
+[INFO] Sent response of 10000000-th Fibonacci to hgrid19 took: 6 s (6801 ms)
+Calculating fibonacci for 1E7
+hgrid22:wait 3
+[INFO] Took  1 s (1257 ms) to calculate fibonacci of 1E7
+Calculating fibonacci for 1E8
+hgrid22:wait 240
+[INFO] Sent response of 10000000-th Fibonacci to hgrid22 took: 5 s (5691 ms)
+[INFO] Took  35 s (35823 ms) to calculate fibonacci of 1E8
+[INFO] Took  37 s (37250 ms) to calculate fibonacci of 1E8
+[INFO] Took  37 s (37601 ms) to calculate fibonacci of 1E8
+[INFO] Took  39 s (39334 ms) to calculate fibonacci of 1E8
+[INFO] Took  36 s (36628 ms) to calculate fibonacci of 1E8
+[INFO] Took  38 s (38089 ms) to calculate fibonacci of 1E8
+[INFO] Took  39 s (39797 ms) to calculate fibonacci of 1E8
+[INFO] Took  41 s (41810 ms) to calculate fibonacci of 1E8
+[INFO] Took  43 s (43532 ms) to calculate fibonacci of 1E8
+[INFO] Took  44 s (44387 ms) to calculate fibonacci of 1E8
+[INFO] Took  42 s (42154 ms) to calculate fibonacci of 1E8
+[INFO] Took  40 s (40724 ms) to calculate fibonacci of 1E8
+[INFO] Sent response of 100000000-th Fibonacci to hgrid7 took: 175 s (175449 ms)
+[INFO] Sent response of 100000000-th Fibonacci to hgrid3 took: 175 s (175279 ms)
+[INFO] Sent response of 100000000-th Fibonacci to hgrid10 took: 173 s (173170 ms)
+[INFO] Sent response of 100000000-th Fibonacci to hgrid4 took: 177 s (177093 ms)
+[INFO] Sent response of 100000000-th Fibonacci to hgrid9 took: 174 s (174208 ms)
+[INFO] Sent response of 100000000-th Fibonacci to hgrid5 took: 177 s (177719 ms)
+[INFO] Sent response of 100000000-th Fibonacci to hgrid12 took: 176 s (176168 ms)
+[INFO] Sent response of 100000000-th Fibonacci to hgrid17 took: 170 s (170549 ms)
+[INFO] Sent response of 100000000-th Fibonacci to hgrid16 took: 171 s (171053 ms)
+[INFO] Sent response of 100000000-th Fibonacci to hgrid15 took: 172 s (172442 ms)
+[INFO] Sent response of 100000000-th Fibonacci to hgrid19 took: 170 s (170444 ms)
+[INFO] Sent response of 100000000-th Fibonacci to hgrid22 took: 162 s (162089 ms)
+hgrid5:wait 3
+hgrid4:wait 3
+hgrid7:wait 3
+hgrid3:wait 3
+hgrid12:wait 3
+hgrid5 left.
+
+Broadcasting message from hgrid5:exit
+hgrid9:wait 3
+hgrid4 left.
+
+Broadcasting message from hgrid4:exit
+hgrid7 left.
+
+Broadcasting message from hgrid7:exit
+Exception in thread "pool-1-thread-13" com.zeroc.Ice.ConnectionRefusedException
+    error = 0
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponseOrUserEx(OutgoingAsync.java:140)
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponse(OutgoingAsync.java:112)
+	at Demo.CallbackPrx.response(CallbackPrx.java:27)
+	at Demo.CallbackPrx.response(CallbackPrx.java:22)
+	at Task.broadcast(Task.java:140)
+	at Task.run(Task.java:69)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at com.zeroc.IceInternal.Network.doFinishConnect(Network.java:536)
+	at com.zeroc.IceInternal.StreamSocket.connect(StreamSocket.java:92)
+	at com.zeroc.IceInternal.TcpTransceiver.initialize(TcpTransceiver.java:25)
+	at com.zeroc.Ice.ConnectionI.initialize(ConnectionI.java:2116)
+	at com.zeroc.Ice.ConnectionI.message(ConnectionI.java:1098)
+	at com.zeroc.IceInternal.ThreadPool.run(ThreadPool.java:410)
+	at com.zeroc.IceInternal.ThreadPool.access$500(ThreadPool.java:7)
+	at com.zeroc.IceInternal.ThreadPool$EventHandlerThread.run(ThreadPool.java:784)
+	... 1 more
+Exception in thread "pool-1-thread-1" com.zeroc.Ice.ConnectionRefusedException
+    error = 0
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponseOrUserEx(OutgoingAsync.java:140)
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponse(OutgoingAsync.java:112)
+	at Demo.CallbackPrx.response(CallbackPrx.java:27)
+	at Demo.CallbackPrx.response(CallbackPrx.java:22)
+	at Task.broadcast(Task.java:140)
+	at Task.run(Task.java:69)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at com.zeroc.IceInternal.Network.doFinishConnect(Network.java:536)
+	at com.zeroc.IceInternal.StreamSocket.connect(StreamSocket.java:92)
+	at com.zeroc.IceInternal.TcpTransceiver.initialize(TcpTransceiver.java:25)
+	at com.zeroc.Ice.ConnectionI.initialize(ConnectionI.java:2116)
+	at com.zeroc.Ice.ConnectionI.message(ConnectionI.java:1098)
+	at com.zeroc.IceInternal.ThreadPool.run(ThreadPool.java:410)
+	at com.zeroc.IceInternal.ThreadPool.access$500(ThreadPool.java:7)
+	at com.zeroc.IceInternal.ThreadPool$EventHandlerThread.run(ThreadPool.java:784)
+	... 1 more
+hgrid3 left.
+
+Broadcasting message from hgrid3:exit
+Exception in thread "pool-1-thread-2" com.zeroc.Ice.ConnectionRefusedException
+    error = 0
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponseOrUserEx(OutgoingAsync.java:140)
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponse(OutgoingAsync.java:112)
+	at Demo.CallbackPrx.response(CallbackPrx.java:27)
+	at Demo.CallbackPrx.response(CallbackPrx.java:22)
+	at Task.broadcast(Task.java:140)
+	at Task.run(Task.java:69)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at com.zeroc.IceInternal.Network.doFinishConnect(Network.java:536)
+	at com.zeroc.IceInternal.StreamSocket.connect(StreamSocket.java:92)
+	at com.zeroc.IceInternal.TcpTransceiver.initialize(TcpTransceiver.java:25)
+	at com.zeroc.Ice.ConnectionI.initialize(ConnectionI.java:2116)
+	at com.zeroc.Ice.ConnectionI.message(ConnectionI.java:1098)
+	at com.zeroc.IceInternal.ThreadPool.run(ThreadPool.java:410)
+	at com.zeroc.IceInternal.ThreadPool.access$500(ThreadPool.java:7)
+	at com.zeroc.IceInternal.ThreadPool$EventHandlerThread.run(ThreadPool.java:784)
+	... 1 more
+hgrid10:wait 3
+hgrid12 left.
+
+Broadcasting message from hgrid12:exit
+Exception in thread "pool-1-thread-15" com.zeroc.Ice.ConnectionRefusedException
+    error = 0
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponseOrUserEx(OutgoingAsync.java:140)
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponse(OutgoingAsync.java:112)
+	at Demo.CallbackPrx.response(CallbackPrx.java:27)
+	at Demo.CallbackPrx.response(CallbackPrx.java:22)
+	at Task.broadcast(Task.java:140)
+	at Task.run(Task.java:69)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at com.zeroc.IceInternal.Network.doFinishConnect(Network.java:536)
+	at com.zeroc.IceInternal.StreamSocket.connect(StreamSocket.java:92)
+	at com.zeroc.IceInternal.TcpTransceiver.initialize(TcpTransceiver.java:25)
+	at com.zeroc.Ice.ConnectionI.initialize(ConnectionI.java:2116)
+	at com.zeroc.Ice.ConnectionI.message(ConnectionI.java:1098)
+	at com.zeroc.IceInternal.ThreadPool.run(ThreadPool.java:410)
+	at com.zeroc.IceInternal.ThreadPool.access$500(ThreadPool.java:7)
+	at com.zeroc.IceInternal.ThreadPool$EventHandlerThread.run(ThreadPool.java:784)
+	... 1 more
+hgrid9 left.
+
+Broadcasting message from hgrid9:exit
+Exception in thread "pool-1-thread-9" com.zeroc.Ice.ConnectionRefusedException
+    error = 0
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponseOrUserEx(OutgoingAsync.java:140)
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponse(OutgoingAsync.java:112)
+	at Demo.CallbackPrx.response(CallbackPrx.java:27)
+	at Demo.CallbackPrx.response(CallbackPrx.java:22)
+	at Task.broadcast(Task.java:140)
+	at Task.run(Task.java:69)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at com.zeroc.IceInternal.Network.doFinishConnect(Network.java:536)
+	at com.zeroc.IceInternal.StreamSocket.connect(StreamSocket.java:92)
+	at com.zeroc.IceInternal.TcpTransceiver.initialize(TcpTransceiver.java:25)
+	at com.zeroc.Ice.ConnectionI.initialize(ConnectionI.java:2116)
+	at com.zeroc.Ice.ConnectionI.message(ConnectionI.java:1098)
+	at com.zeroc.IceInternal.ThreadPool.run(ThreadPool.java:410)
+	at com.zeroc.IceInternal.ThreadPool.access$500(ThreadPool.java:7)
+	at com.zeroc.IceInternal.ThreadPool$EventHandlerThread.run(ThreadPool.java:784)
+	... 1 more
+hgrid10 left.
+
+Broadcasting message from hgrid10:exit
+Exception in thread "pool-1-thread-7" com.zeroc.Ice.ConnectionRefusedException
+    error = 0
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponseOrUserEx(OutgoingAsync.java:140)
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponse(OutgoingAsync.java:112)
+	at Demo.CallbackPrx.response(CallbackPrx.java:27)
+	at Demo.CallbackPrx.response(CallbackPrx.java:22)
+	at Task.broadcast(Task.java:140)
+	at Task.run(Task.java:69)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at com.zeroc.IceInternal.Network.doFinishConnect(Network.java:536)
+	at com.zeroc.IceInternal.StreamSocket.connect(StreamSocket.java:92)
+	at com.zeroc.IceInternal.TcpTransceiver.initialize(TcpTransceiver.java:25)
+	at com.zeroc.Ice.ConnectionI.initialize(ConnectionI.java:2116)
+	at com.zeroc.Ice.ConnectionI.message(ConnectionI.java:1098)
+	at com.zeroc.IceInternal.ThreadPool.run(ThreadPool.java:410)
+	at com.zeroc.IceInternal.ThreadPool.access$500(ThreadPool.java:7)
+	at com.zeroc.IceInternal.ThreadPool$EventHandlerThread.run(ThreadPool.java:784)
+	... 1 more
+hgrid17:wait 3
+hgrid15:wait 3
+hgrid16:wait 3
+hgrid17 left.
+
+Broadcasting message from hgrid17:exit
+Exception in thread "pool-1-thread-4" com.zeroc.Ice.ConnectionRefusedException
+    error = 0
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponseOrUserEx(OutgoingAsync.java:140)
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponse(OutgoingAsync.java:112)
+	at Demo.CallbackPrx.response(CallbackPrx.java:27)
+	at Demo.CallbackPrx.response(CallbackPrx.java:22)
+	at Task.broadcast(Task.java:140)
+	at Task.run(Task.java:69)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at com.zeroc.IceInternal.Network.doFinishConnect(Network.java:536)
+	at com.zeroc.IceInternal.StreamSocket.connect(StreamSocket.java:92)
+	at com.zeroc.IceInternal.TcpTransceiver.initialize(TcpTransceiver.java:25)
+	at com.zeroc.Ice.ConnectionI.initialize(ConnectionI.java:2116)
+	at com.zeroc.Ice.ConnectionI.message(ConnectionI.java:1098)
+	at com.zeroc.IceInternal.ThreadPool.run(ThreadPool.java:410)
+	at com.zeroc.IceInternal.ThreadPool.access$500(ThreadPool.java:7)
+	at com.zeroc.IceInternal.ThreadPool$EventHandlerThread.run(ThreadPool.java:784)
+	... 1 more
+hgrid19:wait 3
+hgrid15 left.
+
+Broadcasting message from hgrid15:exit
+Exception in thread "pool-1-thread-18" com.zeroc.Ice.ConnectionRefusedException
+    error = 0
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponseOrUserEx(OutgoingAsync.java:140)
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponse(OutgoingAsync.java:112)
+	at Demo.CallbackPrx.response(CallbackPrx.java:27)
+	at Demo.CallbackPrx.response(CallbackPrx.java:22)
+	at Task.broadcast(Task.java:140)
+	at Task.run(Task.java:69)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at com.zeroc.IceInternal.Network.doFinishConnect(Network.java:536)
+	at com.zeroc.IceInternal.StreamSocket.connect(StreamSocket.java:92)
+	at com.zeroc.IceInternal.TcpTransceiver.initialize(TcpTransceiver.java:25)
+	at com.zeroc.Ice.ConnectionI.initialize(ConnectionI.java:2116)
+	at com.zeroc.Ice.ConnectionI.message(ConnectionI.java:1098)
+	at com.zeroc.IceInternal.ThreadPool.run(ThreadPool.java:410)
+	at com.zeroc.IceInternal.ThreadPool.access$500(ThreadPool.java:7)
+	at com.zeroc.IceInternal.ThreadPool$EventHandlerThread.run(ThreadPool.java:784)
+	... 1 more
+hgrid16 left.
+
+Broadcasting message from hgrid16:exit
+Exception in thread "pool-1-thread-19" com.zeroc.Ice.ConnectionRefusedException
+    error = 0
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponseOrUserEx(OutgoingAsync.java:140)
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponse(OutgoingAsync.java:112)
+	at Demo.CallbackPrx.response(CallbackPrx.java:27)
+	at Demo.CallbackPrx.response(CallbackPrx.java:22)
+	at Task.broadcast(Task.java:140)
+	at Task.run(Task.java:69)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at com.zeroc.IceInternal.Network.doFinishConnect(Network.java:536)
+	at com.zeroc.IceInternal.StreamSocket.connect(StreamSocket.java:92)
+	at com.zeroc.IceInternal.TcpTransceiver.initialize(TcpTransceiver.java:25)
+	at com.zeroc.Ice.ConnectionI.initialize(ConnectionI.java:2116)
+	at com.zeroc.Ice.ConnectionI.message(ConnectionI.java:1098)
+	at com.zeroc.IceInternal.ThreadPool.run(ThreadPool.java:410)
+	at com.zeroc.IceInternal.ThreadPool.access$500(ThreadPool.java:7)
+	at com.zeroc.IceInternal.ThreadPool$EventHandlerThread.run(ThreadPool.java:784)
+	... 1 more
+hgrid19 left.
+
+Broadcasting message from hgrid19:exit
+Exception in thread "pool-1-thread-10" com.zeroc.Ice.ConnectionRefusedException
+    error = 0
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponseOrUserEx(OutgoingAsync.java:140)
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponse(OutgoingAsync.java:112)
+	at Demo.CallbackPrx.response(CallbackPrx.java:27)
+	at Demo.CallbackPrx.response(CallbackPrx.java:22)
+	at Task.broadcast(Task.java:140)
+	at Task.run(Task.java:69)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at com.zeroc.IceInternal.Network.doFinishConnect(Network.java:536)
+	at com.zeroc.IceInternal.StreamSocket.connect(StreamSocket.java:92)
+	at com.zeroc.IceInternal.TcpTransceiver.initialize(TcpTransceiver.java:25)
+	at com.zeroc.Ice.ConnectionI.initialize(ConnectionI.java:2116)
+	at com.zeroc.Ice.ConnectionI.message(ConnectionI.java:1098)
+	at com.zeroc.IceInternal.ThreadPool.run(ThreadPool.java:410)
+	at com.zeroc.IceInternal.ThreadPool.access$500(ThreadPool.java:7)
+	at com.zeroc.IceInternal.ThreadPool$EventHandlerThread.run(ThreadPool.java:784)
+	... 1 more
+hgrid22:wait 3
+hgrid22 left.
+
+Broadcasting message from hgrid22:exit
+Exception in thread "pool-1-thread-21" com.zeroc.Ice.ConnectionRefusedException
+    error = 0
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponseOrUserEx(OutgoingAsync.java:140)
+	at com.zeroc.IceInternal.OutgoingAsync.waitForResponse(OutgoingAsync.java:112)
+	at Demo.CallbackPrx.response(CallbackPrx.java:27)
+	at Demo.CallbackPrx.response(CallbackPrx.java:22)
+	at Task.broadcast(Task.java:140)
+	at Task.run(Task.java:69)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at com.zeroc.IceInternal.Network.doFinishConnect(Network.java:536)
+	at com.zeroc.IceInternal.StreamSocket.connect(StreamSocket.java:92)
+	at com.zeroc.IceInternal.TcpTransceiver.initialize(TcpTransceiver.java:25)
+	at com.zeroc.Ice.ConnectionI.initialize(ConnectionI.java:2116)
+	at com.zeroc.Ice.ConnectionI.message(ConnectionI.java:1098)
+	at com.zeroc.IceInternal.ThreadPool.run(ThreadPool.java:410)
+	at com.zeroc.IceInternal.ThreadPool.access$500(ThreadPool.java:7)
+	at com.zeroc.IceInternal.ThreadPool$EventHandlerThread.run(ThreadPool.java:784)
+	... 1 more
