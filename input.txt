@@ -1,0 +1,20 @@
+bc: hey!
+10
+wait 3
+100
+wait 3
+1000
+wait 3
+10000
+wait 3
+100000
+wait 3
+1000000
+wait 3
+10000000
+wait 3
+100000000
+wait 100
+list clients
+wait 3
+exit

@@ -1,7 +1,10 @@
 import java.math.BigInteger;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 import Demo.CallbackPrx;
 
@@ -29,8 +32,16 @@ public class Task implements Runnable {
     public void run() {
         String clientHostName = Utils.parseHostname(message);
         String msg = Utils.parseMessage(message);
+
         if (msg == null) {
-            callback.response("0");
+            try {
+                sem.acquire();
+                callback.response("0");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                this.sem.release();
+            }
             return;
         }
         msg = msg.toLowerCase();
@@ -38,6 +49,7 @@ public class Task implements Runnable {
         Integer value = Utils.isInteger(msg);
 
         try {
+            sem.acquire();
             if (value != null) {
                 respondFibonacciRequest(value, clientHostName);
             } else if (msg.startsWith("list clients")) {
@@ -60,22 +72,40 @@ public class Task implements Runnable {
                 callback.response("0");
             }
         } catch (InterruptedException e) {
-            sem.release();
             e.printStackTrace();
+        } finally {
+            sem.release();
         }
     }
 
     public void respondFibonacciRequest(Integer value, String clientHostname) {
         String response = "0";
+        long startTimeRes = System.nanoTime();
+
         if (value > this.fib.maximum()) {
             response = "The number is too big";
         } else if (value < 0) {
             response = "Cannot calculate fibonacci from negative numbers";
         } else {
+            NumberFormat numFormat = new DecimalFormat("0E0");
+            String formatted = numFormat.format(value);
+            long startTime = System.nanoTime();
+            System.out.println("Calculating fibonacci for " + formatted);
             BigInteger fib = this.fib.calculate(value);
+            long elapsed = System.nanoTime() - startTime;
+            long elapsedMillis = TimeUnit.MILLISECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
+            long elapsedSecs = TimeUnit.SECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
+            System.out.println(
+                    "[INFO] Took  " + elapsedSecs + " s (" + elapsedMillis + " ms) to calculate fibonacci of "
+                            + formatted);
             response = String.valueOf(fib);
         }
         callback.response(response);
+        long elapsed = System.nanoTime() - startTimeRes;
+        long elapsedMillis = TimeUnit.MILLISECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
+        long elapsedSecs = TimeUnit.SECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
+        System.out.println("[INFO] Sent response of " + value + "-th Fibonacci to " + clientHostname + " took: "
+                + elapsedSecs + " s (" + elapsedMillis + " ms)");
     }
 
     public void send(String from, String to, String message) throws InterruptedException {

@@ -78,6 +78,15 @@ public class Client {
             long elapsedMillis = TimeUnit.MILLISECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
             long elapsedSecs = TimeUnit.SECONDS.convert(elapsed, TimeUnit.NANOSECONDS);
             System.out.print("Time: " + (elapsedMillis) + " ms, " + (elapsedSecs) + " s");
+            if (msg.startsWith("wait")) {
+                int secs = Integer.parseInt(msg.split(" ")[1]);
+                System.out.println("Waiting for response (" + secs + " secs)...");
+                try {
+                    Thread.sleep(secs * 1000);
+                } catch (InterruptedException e) {
+                    System.out.println("Error: " + e);
+                }
+            }
             if (msg.equals("exit")) {
                 System.out.println("Connection closed.");
                 break;

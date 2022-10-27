@@ -1,4 +1,5 @@
 # Ignore project-specific cache and directories
+.log
 *.zip
 .gradle
 .vscode
